@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './resources/responsive.css';
+import './resources/plugins/fontawesome-free-5.11.2-web/css/all.min.css';
+import './resources/plugins/bootstrap/bootstrap.min.css';
+import './resources/plugins/bootstrap/bootstrap.min.css';
+import './resources/plugins/kipso-icons/style.css';
 
 ReactDOM.render(
   <React.StrictMode>
