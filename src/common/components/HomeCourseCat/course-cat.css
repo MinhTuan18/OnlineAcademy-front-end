@@ -1,0 +1,85 @@
+.course-category-three {
+    position: relative;
+    padding: 120px 0;
+  }
+  .course-category-three__circle {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+  .course-category-three__more-link {
+    margin-top: 30px;
+    padding: 21.5px 68px;
+    background-color: #012237;
+    color: #fff;
+  }
+  .course-category-three__more-link:hover {
+    background-color: #f16101;
+    color: #fff;
+  }
+  .course-category-three__single {
+    position: relative;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    margin-bottom: 30px;
+  }
+  .course-category-three__single:hover {
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  }
+  .course-category-three__single:hover .course-category-three__content {
+    opacity: 1;
+  }
+  .course-category-three__content {
+    width: calc(100% - 40px);
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    opacity: 0.8;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .course-category-three__content::before {
+    content: '';
+    width: 30px;
+    height: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+  }
+  .course-category-three__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #012237;
+    margin: 0;
+    line-height: 1em;
+    margin-bottom: 8px;
+  }
+  .course-category-three__title a {
+    color: inherit;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .course-category-three__title a:hover {
+    color: #2da397;
+  }
+  .course-category-three__text {
+    margin: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #81868a;
+    line-height: 1em;
+    letter-spacing: .2em;
+  }

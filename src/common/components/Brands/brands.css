@@ -1,0 +1,33 @@
+/*
+* 19. brand styles
+*/
+.brand-one {
+    padding: 120.5px 0;
+  }
+  .brand-one__home-three {
+    border-top: 2px solid #f1f1f1;
+  }
+  
+  .brand-one__carousel {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  .brand-one__carousel img {
+    opacity: 0.2;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .brand-one__carousel img:hover {
+    opacity: 0.6;
+  }
+  
+  .brand-two {
+    padding: 120px 0;
+    border-top: 2px solid #f1f1f1;
+  }
+  .brand-two .block-title__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #012237;
+    margin: 0;
+  }

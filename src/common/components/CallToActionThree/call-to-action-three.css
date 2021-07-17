@@ -1,0 +1,100 @@
+.cta-five {
+    position: relative;
+    background-image: url(../../../resources/images/cta-map-1-1.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #2da397;
+    padding: 120px 0;
+  }
+  .cta-five__title {
+    margin: 0;
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .cta-five__text {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 15px;
+  }
+  .cta-five__btn {
+    padding: 21.5px 68px;
+    font-size: 18px;
+    margin-top: 50px;
+  }
+  
+  [class*=cta-five__members-] {
+    width: 71px;
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    border-radius: 50%;
+    -webkit-animation-name: bubbleMoveTwo;
+            animation-name: bubbleMoveTwo;
+    -webkit-animation-duration: 10s;
+            animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+  }
+  
+  .cta-five__members-1 {
+    top: 10%;
+    left: 25%;
+  }
+  
+  .cta-five__members-2 {
+    top: 45%;
+    left: 25%;
+    -webkit-transform: scale(0.65);
+            transform: scale(0.65);
+  }
+  
+  .cta-five__members-3 {
+    bottom: 10%;
+    left: 12%;
+  }
+  
+  .cta-five__members-4 {
+    top: 15%;
+    right: 15%;
+  }
+  
+  .cta-five__members-5 {
+    top: 45%;
+    right: 5%;
+    -webkit-transform: scale(0.65);
+            transform: scale(0.65);
+  }
+  
+  .cta-five__members-6 {
+    bottom: 15%;
+    right: 25%;
+  }
+  
+  [class*=cta-five__bubble-] {
+    background-color: #f16101;
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+    width: 47px;
+    height: 47px;
+    position: absolute;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 47px;
+  }
+  [class*=cta-five__bubble-] i.fa-rocket {
+    font-size: 18px;
+  }
+  
+  .cta-five__bubble-1 {
+    top: 40%;
+    left: 10%;
+  }
+  
+  .cta-five__bubble-2 {
+    bottom: 30%;
+    right: 10%;
+  }

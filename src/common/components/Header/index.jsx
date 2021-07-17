@@ -12,10 +12,42 @@ import './header.css';
 
 export const Header = () => {
     const [sticky, setSticky] = useState(false);
-    // const { isMobile } = useViewport()
+    
+    // const componentDidMount = () => {
+    //     window.addEventListener('scroll', handleScroll);
 
-    // if (isMobile) {
+    //     //Mobile Menu
+    //     mobileMenu();
     // }
+
+    // const componentWillUnmount = () => {
+    //     window.removeEventListener('scroll', handleScroll);
+    // }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        mobileMenu();
+    });
+
+    const handleScroll = () => {
+
+        if (window.scrollY > 70) {
+            setSticky(true);
+        } else if (window.scrollY < 70) {
+            setSticky(false);
+        }
+
+    }
+
+    const mobileMenu = () => {
+        //Mobile Menu Toggle
+        const mainNavToggler = document.querySelector(".menu-toggler");
+        const mainNav = document.querySelector(".main-navigation");
+
+        mainNavToggler.addEventListener("click", () => {
+            mainNav.style.display = ( (mainNav.style.display !== "block" ? "block" : "none" ) );
+        });
+    }
     return (
         <header className="site-header site-header__header-one ">
             <nav className={`navbar navbar-expand-lg navbar-light header-navigation stricky ${sticky ? 'stricked-menu stricky-fixed' : ''}`}>
@@ -23,14 +55,14 @@ export const Header = () => {
                     <div className="logo-box clearfix">
                         
                         <Link className="navbar-brand" to="/">
-                            <img src="/images/icons/favicon.png" className="main-logo" width="128"alt="Awesome Image" />
+                            <img src="/images/icons/favicon.png" className="main-logo" width="128" alt="Awesome Logo" />
                         </Link>
                         
                         <div className="header__social">
-                            <a href="#"><i className="fab fa-twitter"></i></a>
-                            <a href="#"><i className="fab fa-facebook-square"></i></a>
-                            <a href="#"><i className="fab fa-pinterest-p"></i></a>
-                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <Link><i className="fab fa-twitter"></i></Link>
+                            <Link><i className="fab fa-facebook-square"></i></Link>
+                            <Link><i className="fab fa-pinterest-p"></i></Link>
+                            <Link><i className="fab fa-instagram"></i></Link>
                         </div>
                         <button className="menu-toggler">
                             <span className="kipso-icon-menu"></span>
@@ -39,60 +71,60 @@ export const Header = () => {
                     <div className="main-navigation">
                         <ul className=" navigation-box">
                             <li className="current">
-                                <Link href="/"><a>Home</a></Link>
+                                <Link to="/">Home</Link>
                                 <ul className="sub-menu">
-                                    <li><Link href="/"><a>Home 01</a></Link></li>
-                                    <li><Link href="/index-2"><a>Home 02</a></Link></li>
-                                    <li><Link href="/index-3"><a>Home 03</a></Link></li>
-                                    <li><a href="#">Header Versions</a>
+                                    <li><Link to="/">Home 01</Link></li>
+                                    <li><Link>Home 02</Link></li>
+                                    <li><Link>Home 03</Link></li>
+                                    <li><Link>Header Versions</Link>
                                         <ul className="sub-menu">
-                                            <li><Link href="/"><a>Header 01</a></Link></li>
-                                            <li><Link href="/index-2"><a>Header 02</a></Link></li>
-                                            <li><Link href="/index-3"><a>Header 03</a></Link></li>
+                                            <li><Link to="/">Header 01</Link></li>
+                                            <li><Link>Header 02</Link></li>
+                                            <li><Link>Header 03</Link></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Pages</a>
+                                <Link>Pages</Link>
                                 <ul className="sub-menu">
-                                    <li><Link href="/about"><a>About Page</a></Link></li>
-                                    <li><Link href="/gallery"><a>Gallery</a></Link></li>
-                                    <li><Link href="/pricing"><a>Pricing Plans</a></Link></li>
-                                    <li><Link href="/faq"><a>FAQ'S</a></Link></li>
+                                    <li><Link>About Page</Link></li>
+                                    <li><Link>Gallery</Link></li>
+                                    <li><Link>Pricing Plans</Link></li>
+                                    <li><Link>FAQ'S</Link></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="/courses">Courses</a>
+                                <Link href="/courses">Courses</Link>
                                 <ul className="sub-menu">
-                                    <li><Link href="/courses"><a>Courses</a></Link></li>
-                                    <li><Link href="/course-details"><a>Courses Details</a></Link></li>
+                                    <li><Link to="/courses">Courses</Link></li>
+                                    <li><Link>Courses Details</Link></li>
                                 </ul>
                             </li>
                             <li>
-                                <Link href="/teachers"><a>Teachers</a></Link>
+                                <Link>Teachers</Link>
                                 <ul className="sub-menu">
-                                    <li><Link href="/teachers"><a>Teachers</a></Link></li>
-                                    <li><Link href="/teacher-details"><a>Teachers Details</a></Link></li>
-                                    <li><Link href="/become-teacher"><a>Become Teacher</a></Link></li>
+                                    <li><Link>Teachers</Link></li>
+                                    <li><Link>Teachers Details</Link></li>
+                                    <li><Link>Become Teacher</Link></li>
                                 </ul>
                             </li>
                             <li>
-                                <Link href="/news"><a>News</a></Link>
+                                <Link>News</Link>
                                 <ul className="sub-menu">
-                                    <li><Link href="/news"><a>News Page</a></Link></li>
-                                    <li><Link href="/news-details"><a>News Details</a></Link></li>
+                                    <li><Link>News Page</Link></li>
+                                    <li><Link>News Details</Link></li>
                                 </ul>
                             </li>
                             <li>
-                                <Link href="/contact"><a>Contact</a></Link>
+                                <Link>Contact</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="right-side-box">
-                        <a className="header__search-btn search-popup__toggler search-toggle" href="#"><i
+                        <Link className="header__search-btn search-popup__toggler search-toggle"><i
                             className="kipso-icon-magnifying-glass"></i>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </nav>
