@@ -4,7 +4,7 @@ import React from 'react';
 import './slider.css';
 import { Carousel } from 'react-bootstrap'
 import { useState } from 'react';
-import { queryCoursesByAdvancedFilter, } from '../../../service';
+//import { queryCoursesByAdvancedFilter, } from '../../../service';
 import { useEffect } from 'react';
 
 
