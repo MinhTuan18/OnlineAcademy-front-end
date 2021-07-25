@@ -69,7 +69,7 @@ export const Header = () => {
                         </button>
                     </div>
                     <div className="main-navigation">
-                        <ul className=" navigation-box">
+                        <ul className="navigation-box">
                             <li className="current">
                                 <Link to="/">Home</Link>
                                 <ul className="sub-menu">
