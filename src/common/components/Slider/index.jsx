@@ -54,7 +54,7 @@ const Slider = (props) => {
     useEffect(() => {
         async function fetchQueryCourseResults() {
             console.log(filter);
-            const queryCourseResults = await queryCoursesByAdvancedFilter(filter);
+            //const queryCourseResults = await queryCoursesByAdvancedFilter(filter);
             // console.log(queryCourseResults);
         }
         fetchQueryCourseResults();
