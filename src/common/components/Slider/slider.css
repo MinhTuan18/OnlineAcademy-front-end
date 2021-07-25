@@ -603,6 +603,20 @@
     font-weight: 500;
     padding-left: 30px;
   }
+  .slider-three__search select {
+    width: 100%;
+    height: 78px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #f16101;
+    font-size: 16px;
+    font-weight: 500;
+    appearance: none;
+    padding-left: 30px;
+    position: absolute;
+    margin-top: 25px;
+  }
   .slider-three__search button[type=submit] {
     width: 46px;
     height: 46px;

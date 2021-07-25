@@ -3,9 +3,12 @@ import React from 'react';
 // import 'swiper/css/swiper.css';
 import './slider.css';
 import { Carousel } from 'react-bootstrap'
+import { useState } from 'react';
+import { queryCoursesByAdvancedFilter, } from '../../../service';
+import { useEffect } from 'react';
 
 
-const Slider = () => {
+const Slider = (props) => {
 
     // const [swiper, setSwiper] = useState(null);
 
@@ -20,6 +23,51 @@ const Slider = () => {
     //       swiper.slidePrev();
     //     }
     // };
+    const { categoryList } = props;
+    // console.log(categoryList);
+    const [courseName, setCourseName] = useState('');
+    const [selectedCat, setSelectedCat] = useState('');
+    const [filter, setFilter] = useState({});
+    const [emptySearchFormAlert, setEmptySearchFormAlert] = useState(false);
+    
+
+    const onSearchFilterSubmit = async event => {
+        event.preventDefault();
+        // console.log(selectedCat);
+
+        const [typeOfCat, id] = selectedCat.split(':');
+        // console.log(typeOfCat);
+        // console.log(id);
+
+        if (courseName !== '' && selectedCat === '') {
+            setFilter({title: courseName});
+            // const queryResults = await queryCoursesByAdvancedFilter(filter);
+            // console.log(queryResults);
+        } else if (courseName === '' && selectedCat !== '') {
+            typeOfCat === 'category' ? setFilter({category: id}) : setFilter({subCategory: id});
+        } else if (courseName !== '' && selectedCat !== '') {
+            typeOfCat === 'category' ? setFilter({title: courseName, category: id}) : setFilter({title: courseName, subCategory: id});
+            // setFilter({title: courseName, category: selectedCat});
+        } else setEmptySearchFormAlert(true);
+    }
+
+    useEffect(() => {
+        async function fetchQueryCourseResults() {
+            console.log(filter);
+            const queryCourseResults = await queryCoursesByAdvancedFilter(filter);
+            // console.log(queryCourseResults);
+        }
+        fetchQueryCourseResults();
+    }, [filter])
+
+    useEffect(() => {
+        function alertEmptySearchFormSubmit() {
+            if (emptySearchFormAlert) {
+                alert('You need to fill in course name or choose a category!');
+            }
+        }
+        alertEmptySearchFormSubmit();
+    }, [emptySearchFormAlert])
 
     return (
         <Carousel>
@@ -41,11 +89,30 @@ const Slider = () => {
                                     <p className="slider-three__text">You need to be sure there isn't
                                         anything hidden in the middle of text
                                         lorem ipsum on the Internet.</p>
-                                    <form action="#" className="slider-three__search">
-                                        <input type="text" placeholder="Search courses" />
+                                    <form className="slider-three__search" onSubmit={onSearchFilterSubmit}>
+                                        <input type="text" placeholder="Search courses" onChange={event => {setCourseName(event.target.value)}}/>
                                         <button type="submit">
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
+                                        <select class="form-select" onChange={event => setSelectedCat(event.target.value)}>
+                                            <option value="" selected>All Categories</option>
+                                            {categoryList.map(category => {
+                                                return (
+                                                    <>
+                                                        <option value={`category:${category._id}`}>{category.name}</option>
+                                                            {category.subCategories.map(subCategory => {
+                                                                return (
+                                                                    <>
+                                                                        <option value={`subCategory:${subCategory._id}`}>&nbsp;&nbsp;{subCategory.name}</option>
+                                                                    </>
+                                                                )
+                                                            })}
+                                                            
+                                                    </>
+                                                    
+                                                );
+                                            })}        
+                                        </select>
                                     </form>
                                 </div>
                             </div>
@@ -71,11 +138,30 @@ const Slider = () => {
                                     <p className="slider-three__text">You need to be sure there isn't
                                         anything hidden in the middle of text
                                         lorem ipsum on the Internet.</p>
-                                    <form action="#" className="slider-three__search">
-                                        <input type="text" placeholder="Search courses" />
+                                    <form className="slider-three__search" onSubmit={onSearchFilterSubmit}>
+                                        <input type="text" placeholder="Search courses" onChange={event => {setCourseName(event.target.value)}}/>
+                                        
                                         <button type="submit">
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
+                                        <select class="form-select" onChange={event => setSelectedCat(event.target.value)}>
+                                            <option value="" selected>All Categories</option>
+
+                                            {categoryList.map(category => {
+                                                return (
+                                                    <>
+                                                        <option value={`category:${category._id}`}>{category.name}</option>
+                                                            {category.subCategories.map(subCategory => {
+                                                                return (
+                                                                    <>
+                                                                        <option value={`subCategory:${subCategory._id}`}>&nbsp;&nbsp;{subCategory.name}</option>
+                                                                    </>
+                                                                )
+                                                            })}   
+                                                    </>
+                                                );
+                                            })}        
+                                        </select>
                                     </form>
                                 </div>
                             </div>
@@ -83,9 +169,7 @@ const Slider = () => {
                     </div>
                 </section>
             </Carousel.Item>
-
         </Carousel>
-        
     );
 }
 
