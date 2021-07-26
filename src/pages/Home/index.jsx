@@ -13,13 +13,15 @@ import CallToActionThree from '../../common/components/CallToActionThree';
 import Footer from '../../common/components/Footer';
 // import CourseFigure from '../../common/components/CourseFigure';
 import { getAllCategories } from '../../service/categories';
-import { queryMostViewsCourses, queryNewestCourses } from '../../service/courses';
-
+import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategoryLast7Days } from '../../service';
+// import { queryMostRegistedSubCategoryLast7Days } from '../../service/subcategories';
 
 const Home = () => {
     const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
     const [newestCourseList, setNewestCourseList] = useState([]);
+    const [mostRegisterSubCategoryList, setMostRegisterSubCategoryList] = useState([]);
+
 
     useEffect(() => {
         setTimeout(async () => {
@@ -30,6 +32,8 @@ const Home = () => {
             setMostViewCourseList(mostViewCourses);
             const newestCourses = await queryNewestCourses();
             setNewestCourseList(newestCourses);
+            const mostRegisterSubCategories = await queryMostRegistedSubCategoryLast7Days();
+            setMostRegisterSubCategoryList(mostRegisterSubCategories);
         }, 300);
     }, [])
     
@@ -37,7 +41,7 @@ const Home = () => {
         <>
             <HomeHeader categoryList={categoryList}/>
             <Slider categoryList={categoryList}/>
-            <CourseCat/>
+            <CourseCat subcategoryList={mostRegisterSubCategoryList}/>
             <CallToActionOne/>
             <TeamTab/>
             <CourseSwiper type="most-view" courseList={mostViewCourseList}/>
@@ -49,7 +53,6 @@ const Home = () => {
             {/* <CourseFigure/> */}
             <Footer/>
         </>
-        
     );
 }
 
