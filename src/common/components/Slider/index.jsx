@@ -4,7 +4,7 @@ import React from 'react';
 import './slider.css';
 import { Carousel } from 'react-bootstrap'
 import { useState } from 'react';
-import { queryCoursesByAdvancedFilter, } from '../../../service';
+//import { queryCoursesByAdvancedFilter, } from '../../../service';
 import { useEffect } from 'react';
 
 
@@ -54,7 +54,7 @@ const Slider = (props) => {
     useEffect(() => {
         async function fetchQueryCourseResults() {
             console.log(filter);
-            const queryCourseResults = await queryCoursesByAdvancedFilter(filter);
+            //const queryCourseResults = await queryCoursesByAdvancedFilter(filter);
             // console.log(queryCourseResults);
         }
         fetchQueryCourseResults();

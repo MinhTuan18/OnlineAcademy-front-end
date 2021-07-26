@@ -1,5 +1,5 @@
 import axios from 'axios';
-import extract from '../common/utils/extract';
+//import extract from '../common/utils/extract';
 // import { END_POINT, } from '../config';
 
 const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
