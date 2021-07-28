@@ -3,6 +3,7 @@ import CourseCard from '../../common/components/CourseCard';
 import { Header } from '../../common/components/Header';
 import './course-list.scss';
 import loadingImg from '../../resources/preloader.gif'
+import FilterMenu from '../../common/components/FilterMenu';
  const courses = [
 	{
 		id: "60ba929e039fa80af447cbac", 
@@ -65,6 +66,40 @@ import loadingImg from '../../resources/preloader.gif'
 		price: 250.000
 	},
 ]
+
+const cats= [
+	{
+		name: 'IT',
+		subCategories: [
+			{
+				name: 'IOS'
+			},
+			{
+				name: 'Flutter'
+			},
+			{
+				name: 'React'
+			}
+		]
+	},
+	{
+		name: 'Giáo dục',
+		subCategories: [
+			{
+				name: 'Vật lý'
+			},
+			{
+				name: 'Toán'
+			},
+			{
+				name: 'Ngữ Văn'
+			},
+			{
+				name: 'Tiếng Anh'
+			}
+		]
+	}
+]
 const CourseList = () => {
 	const [courseList, setCourseList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -79,18 +114,22 @@ const CourseList = () => {
 
 	const renderCourseList = courseList.map(course => {
 		console.log(course);
-		const { id, img, category, instructor, title, rating, numOfRatings, time, lectureCount } = course;
+		const { id, img, category, instructor, title, rating, numOfRatings, lectureCount } = course;
 		return <CourseCard id={id} img={img} category={category} instructor={instructor} title={title} 
-							rating={rating} numOfRatings={numOfRatings} time={time} lectureCount={lectureCount}/>
+							rating={rating} numOfRatings={numOfRatings} lectureCount={lectureCount}/>
 	})
 	return (
 		<>
 			<Header/>
 			<div className='course-list-wrapper'>
 				{isLoading ? <img src={loadingImg} alt='isLoading'/> :
-				
-				<div className='grid'>
-					{renderCourseList}
+				<div className='row content-wrapper'>
+					<div className='col-md-2 menu-filter padding-0'>
+						<FilterMenu/>
+					</div>
+					<div className='col-md-10 grid padding-0'>
+							{renderCourseList}
+					</div>
 				</div>
 				}
 			</div>

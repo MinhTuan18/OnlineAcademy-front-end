@@ -5,7 +5,7 @@ import './course-card.scss';
 import StarRatings from 'react-star-ratings';
 
 
-const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings, time, lectureCount, price}) => {
+const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings, lectureCount, price}) => {
   const heartButtonClick = () => {
   }
   return(
@@ -29,8 +29,6 @@ const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings,
           <span className="course-one__stars-count">{numOfRatings}</span>
         </div>
         <div className="course-one__meta">
-          <Link><i className="far fa-clock"></i> {time} Hours</Link>
-          <Link><i className="far fa-folder-open"></i> {lectureCount} Lectures</Link>
           <Link>{price}</Link>
         </div>
       </div>
