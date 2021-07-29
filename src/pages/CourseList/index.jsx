@@ -4,6 +4,7 @@ import { Header } from '../../common/components/Header';
 import './course-list.scss';
 import loadingImg from '../../resources/preloader.gif'
 import FilterMenu from '../../common/components/FilterMenu';
+import TreeList from '../../common/components/TreeList';
  const courses = [
 	{
 		id: "60ba929e039fa80af447cbac", 
@@ -113,7 +114,6 @@ const CourseList = () => {
 	}, []);
 
 	const renderCourseList = courseList.map(course => {
-		console.log(course);
 		const { id, img, category, instructor, title, rating, numOfRatings, lectureCount } = course;
 		return <CourseCard id={id} img={img} category={category} instructor={instructor} title={title} 
 							rating={rating} numOfRatings={numOfRatings} lectureCount={lectureCount}/>
@@ -126,6 +126,7 @@ const CourseList = () => {
 				<div className='row content-wrapper'>
 					<div className='col-md-2 menu-filter padding-0'>
 						<FilterMenu/>
+						<TreeList data={cats} />
 					</div>
 					<div className='col-md-10 grid padding-0'>
 							{renderCourseList}
