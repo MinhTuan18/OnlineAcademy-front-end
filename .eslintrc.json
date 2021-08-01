@@ -20,7 +20,10 @@
     ],
     "rules": {
         // "eol-last": "error",
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "react/no-children-prop": 0,
+        "react/no-find-dom-node": 0
+
         // "prettier/prettier": "error"
         // "quotes": [2, "single", { "avoidEscape": true }],
         // "semi": "off"
