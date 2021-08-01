@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import './header.css';
 import { logout } from '../../../reducers';
 
-export const HomeHeader = (props) => {
-    const { loggedIn } = props;
+export const HomeHeader = ({ loggedIn }) => {
 
     const dispatch = useDispatch();
 
@@ -107,7 +108,7 @@ export const HomeHeader = (props) => {
                                     <li><Link>About Page</Link></li>
                                     <li><Link>Gallery</Link></li>
                                     <li><Link>Pricing Plans</Link></li>
-                                    <li><Link>FAQ'S</Link></li>
+                                    <li><Link>FAQ`&lsquo;`S</Link></li>
                                 </ul>
                             </li>
                             <li>
@@ -152,6 +153,11 @@ export const HomeHeader = (props) => {
 
     );
 }
+
+HomeHeader.propTypes = {
+    loggedIn: PropTypes.bool
+}
+
 
 
 

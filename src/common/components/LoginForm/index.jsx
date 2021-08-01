@@ -1,9 +1,10 @@
 import React from 'react';
 import './login-form.css';
 import { useForm } from "react-hook-form";
+import PropTypes from 'prop-types';
 
-const LoginForm = (props) => {
-    const { onFormSubmit } = props;
+const LoginForm = ({ onFormSubmit }) => {
+    // const { onFormSubmit } = props;
     const { register, handleSubmit } = useForm();
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('');
@@ -37,6 +38,10 @@ const LoginForm = (props) => {
         </section>
         
     );
+}
+
+LoginForm.propTypes = {
+    onFormSubmit: PropTypes.func
 }
 
 export default LoginForm;

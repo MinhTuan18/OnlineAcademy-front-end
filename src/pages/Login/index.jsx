@@ -7,8 +7,8 @@ import LoginForm from '../../common/components/LoginForm';
 import { setUserInfo } from '../../reducers';
 import { login } from '../../service';
 
-const Login = (props) => {
-    const { handleLogin } = props
+const Login = () => {
+    // const { handleLogin } = props
 
     const loggedIn = useSelector(state => state.auth.loggedIn);
     const dispatch = useDispatch();
@@ -45,8 +45,8 @@ const Login = (props) => {
         if (userdata) {
             dispatch(setUserInfo(userdata));
             // console.log(loggedIn);
-            handleLogin(true);
-        } else handleLogin(false);
+            // handleLogin(true);
+        }
     }
     return (
         <>

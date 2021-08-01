@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        // "eol-last": "error",
+        "linebreak-style": ["error", "windows"],
+        "react/prop-types": "off"
+        // "quotes": [2, "single", { "avoidEscape": true }],
+        // "semi": "off"
+    }
+}

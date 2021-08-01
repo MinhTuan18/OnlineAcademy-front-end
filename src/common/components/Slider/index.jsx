@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import Swiper from 'react-id-swiper';
 // import 'swiper/css/swiper.css';
 import './slider.css';
 import { Carousel } from 'react-bootstrap'
 import { useState } from 'react';
 //import { queryCoursesByAdvancedFilter, } from '../../../service';
-import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 
-const Slider = (props) => {
+
+const Slider = ({ categoryList }) => {
 
     // const [swiper, setSwiper] = useState(null);
 
@@ -23,7 +24,7 @@ const Slider = (props) => {
     //       swiper.slidePrev();
     //     }
     // };
-    const { categoryList } = props;
+    // const { categoryList } = props;
     // console.log(categoryList);
     const [courseName, setCourseName] = useState('');
     const [selectedCat, setSelectedCat] = useState('');
@@ -86,7 +87,7 @@ const Slider = (props) => {
                                         anything</p>
                                     <h2 className="slider-three__title">Start learning
                                         with us now</h2>
-                                    <p className="slider-three__text">You need to be sure there isn't
+                                    <p className="slider-three__text">You need to be sure there isn`&apos;`t
                                         anything hidden in the middle of text
                                         lorem ipsum on the Internet.</p>
                                     <form className="slider-three__search" onSubmit={onSearchFilterSubmit}>
@@ -94,7 +95,7 @@ const Slider = (props) => {
                                         <button type="submit">
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
-                                        <select class="form-select" onChange={event => setSelectedCat(event.target.value)}>
+                                        <select className="form-select" onChange={event => setSelectedCat(event.target.value)}>
                                             <option value="" selected>All Categories</option>
                                             {categoryList.map(category => {
                                                 return (
@@ -135,7 +136,7 @@ const Slider = (props) => {
                                         anything</p>
                                     <h2 className="slider-three__title">Start learning
                                         with us now</h2>
-                                    <p className="slider-three__text">You need to be sure there isn't
+                                    <p className="slider-three__text">You need to be sure there isn`&apos;`t
                                         anything hidden in the middle of text
                                         lorem ipsum on the Internet.</p>
                                     <form className="slider-three__search" onSubmit={onSearchFilterSubmit}>
@@ -144,7 +145,7 @@ const Slider = (props) => {
                                         <button type="submit">
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
-                                        <select class="form-select" onChange={event => setSelectedCat(event.target.value)}>
+                                        <select className="form-select" onChange={event => setSelectedCat(event.target.value)}>
                                             <option value="" selected>All Categories</option>
 
                                             {categoryList.map(category => {
@@ -171,6 +172,10 @@ const Slider = (props) => {
             </Carousel.Item>
         </Carousel>
     );
+}
+
+Slider.propTypes = {
+    categoryList: PropTypes.array
 }
 
 export default Slider;
