@@ -4,13 +4,8 @@ import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 
 const LoginForm = ({ onFormSubmit }) => {
-    // const { onFormSubmit } = props;
-    const { register, handleSubmit } = useForm();
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-        // event.preventDefault();
-        // console.log(data);
         onFormSubmit(data);
     }
     return (
@@ -26,8 +21,10 @@ const LoginForm = ({ onFormSubmit }) => {
                     <form className="become-teacher__form-content contact-form-validated"
                             noValidate="novalidate"
                             onSubmit={handleSubmit(onSubmit)}>
-                        <input type="text" placeholder="Email Address" {...register("email")}/>
-                        <input type="password" placeholder="Password" {...register("password")}/>
+                        <input type="text" placeholder="Email Address" {...register("email", { required: true })} autoFocus/>
+                        {errors.email && <span>Email is required</span>}
+                        <input type="password" placeholder="Password" {...register("password", { required: true })}/>
+                        {errors.password && <span>Password is required</span>}
                         <button type="submit" className="thm-btn become-teacher__form-btn">Log In</button>
                     </form>
                     {/* <div className="result text-center"></div> */}

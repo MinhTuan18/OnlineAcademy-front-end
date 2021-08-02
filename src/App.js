@@ -27,9 +27,7 @@ function App() {
               <Home/>
             </Route>
             <Route path='/courses' component={CourseList}/>
-            <Route path='/login'>
-              <Login/>
-            </Route>
+            <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
           </Switch>
         </div>

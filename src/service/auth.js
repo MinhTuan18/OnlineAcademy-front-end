@@ -11,3 +11,38 @@ export const login = async (email, password) => {
     const raw = response?.data ? response?.data : {};
     return raw;
 }
+
+export const register = async (email, password, name) => { 
+    // console.log(END_POINT);
+    try {
+        const response = await axios.post(`${authBackendApiUrl}/register`, {email, password, name});
+        // console.log(response);
+        const raw = response?.data ? response?.data : {};
+        return raw;
+    } catch (error) {
+        return null;
+    }
+    
+}
+
+export const activateAccount = async (email, otp, hash) => { 
+    // console.log(END_POINT);
+    try {
+        const response = await axios.post(`${authBackendApiUrl}/activate-account`, {email, otp, hash});
+        // console.log(response);
+        const raw = response?.data ? response?.data : {};
+        return raw;
+    } catch (error) {
+        return null;
+    }
+}
+
+export const resendOTP = async (email) => { 
+    // console.log(END_POINT);
+    const response = await axios.post(`${authBackendApiUrl}/resend-otp`, {email});
+    console.log(response);
+    const raw = response?.data ? response?.data : {};
+    return raw;
+}
+
+

@@ -68,7 +68,7 @@ export const HomeHeader = ({ loggedIn }) => {
                     (
                         <div className="topbar-one__right">
                             <Link to='/login'>Login</Link>
-                            <Link>Register</Link>
+                            <Link to='/register'>Register</Link>
                         </div>
                     )
                     }
