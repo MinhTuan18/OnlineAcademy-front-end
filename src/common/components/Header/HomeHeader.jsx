@@ -11,6 +11,8 @@ export const HomeHeader = ({ loggedIn }) => {
     const dispatch = useDispatch();
 
     const [sticky, setSticky] = useState(false);
+
+    const accessToken = localStorage.getItem('access_token');
     
     // const componentDidMount = () => {
     //     window.addEventListener('scroll', handleScroll);
@@ -59,7 +61,7 @@ export const HomeHeader = ({ loggedIn }) => {
                         <Link>needhelp@kipso.com</Link>
                         <Link>444 888 0000</Link>
                     </div>
-                    { loggedIn ? (
+                    { (loggedIn || accessToken) ? (
                         <div className="topbar-one__right">
                             <Link>{localStorage.getItem('userName')}</Link>
                             <Link onClick={onLogoutClick}>Logout</Link>
@@ -86,7 +88,7 @@ export const HomeHeader = ({ loggedIn }) => {
                         </button>
                     </div>
                     <div className="main-navigation">
-                        <ul className=" navigation-box">
+                        <ul className="navigation-box">
                             <li className="current">
                                 <Link href="/">Home</Link>
                                 <ul className="sub-menu">

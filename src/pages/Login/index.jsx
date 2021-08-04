@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import Footer from '../../common/components/Footer';
 import { Header } from "../../common/components/Header";
 import LoginForm from '../../common/components/LoginForm';
@@ -16,36 +17,33 @@ const Login = () => {
     const history = useHistory();
 
     useEffect(() => {
-        if(loggedIn)
+        // console.log(loggedIn);
+        if (loggedIn)
         {
-            // console.log(loggedIn);
-            // if(localStorage.permission === 'customer'){
             history.push('/');
-            // }
-            // else if(localStorage.permission === 'admin'){
-            //     history.push('/admin/homepage');
-            // }
-            // else if(localStorage.permission === 'employee'){
-            //     history.push('/employee/homepage');
-            // }
         }
-
-        // return function cleanup(){
-        //     isSubscribed = false;
-        // }
     }, [loggedIn]);
+
+    const showInvalidLoginModal = () => {
+        Swal.fire({
+            title: 'Error',
+            text: 'Email or password is incorrect. Please try again later! ',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+        })
+    }
 
     const onLoginFormSubmit = async (loginData) => {
         console.log(loginData);
         // console.log(password);
         const loginResult = await login(loginData.email, loginData.password);
+        if (!loginResult) {
+            return showInvalidLoginModal();
+        }
         const userdata = loginResult?.data  ? loginResult?.data : {};
         console.log(userdata);
-        // let isLoggedIn;
         if (userdata) {
             dispatch(setUserInfo(userdata));
-            // console.log(loggedIn);
-            // handleLogin(true);
         }
     }
     return (
