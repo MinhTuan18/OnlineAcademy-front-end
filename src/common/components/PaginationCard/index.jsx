@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classnames from 'classnames';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import css from './pagination-card.scss';
+import CourseListContext from '../../../context/CourseListContext';
+import { makeStyles } from '@material-ui/core/styles';
+import Pagination from '@material-ui/lab/Pagination';
+import Typography from '@material-ui/core/Typography';
 
-const PaginationCards = ({ totalLength, pageSize, handlePageChange, resetPage, classes }) => {
-  const pagesCount = Math.ceil(totalLength / pageSize);
-  const [currentPage, setCurrentPage] = useState(0);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
-  useEffect(() => {
-    if (resetPage) setCurrentPage(0);
-  }, [resetPage]);
+const PaginationCards = ({ totalPages }) => {
+  const pagesCount = totalPages;
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const handleClick = (e, index) => {
+  const { handlePageChange } = useContext(CourseListContext);
+
+  const classes = useStyles();
+  
+  const handleChange = (e, index) => {
     e.preventDefault();
     setCurrentPage(index);
     handlePageChange(index);
   };
 
+  
+
   return (
-    <div className={classnames(css.container, classes)}>
-      <Pagination aria-label="Page navigation example">
-        <PaginationItem disabled={currentPage <= 0}>
-          <PaginationLink onClick={e => handleClick(e, currentPage - 1)} previous href="#" />
-        </PaginationItem>
-        {[...Array(pagesCount)].map((_, i) => (
-          <PaginationItem active={i === currentPage}>
-            <PaginationLink onClick={e => handleClick(e, i)} href="#">
-              {i + 1}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-        <PaginationItem disabled={currentPage >= pagesCount - 1}>
-          <PaginationLink onClick={e => handleClick(e, currentPage + 1)} next href="#" />
-        </PaginationItem>
-      </Pagination>
+    <div className={css.container}>
+      <div className={classes.root}>
+        <Typography>Page: {currentPage}</Typography>
+        <Pagination count={pagesCount} page={currentPage} onChange={handleChange} color="primary"/>
+      </div>
     </div>
   );
 };

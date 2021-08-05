@@ -9,26 +9,26 @@ const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings,
   const heartButtonClick = () => {
   }
   return(
-		<Link className="course-one__single color-2">
-      <div className="course-one__image">
+		<Link className="course__single color-2">
+      <div className="course__image">
         <img src="/images/course-1-2.jpg" alt="" />
         <i onClick={heartButtonClick} className="far fa-heart"></i>
       </div>
-      <div className="course-one__content">
-        <Link to="/courses" className="course-one__category">{category}</Link>
-        <div className="course-one__admin">
+      <div className="course__content">
+        <Link to="/courses" className="course__category">{category}</Link>
+        <div className="course__admin">
           <img src={img} alt="" />
             by <Link>{instructor}</Link>
         </div>
-        <h2 className="course-one__title overflow-text" title={title}><Link>{title}</Link></h2>
-        <div className="course-one__stars">
-          <StarRatings className="course-one__stars-wrap"
+        <h2 className="course__title overflow-text" title={title}><Link>{title}</Link></h2>
+        <div className="course__stars">
+          <StarRatings className="course__stars-wrap"
             rating={rating} starDimension="15px" starSpacing="0" starRatedColor="#f16101"
           />
-          <span className="course-one__count">{rating}</span>
-          <span className="course-one__stars-count">{numOfRatings}</span>
+          <span className="course__count">{rating}</span>
+          <span className="course__stars-count">{numOfRatings}</span>
         </div>
-        <div className="course-one__meta">
+        <div className="course__meta">
           <Link>{price}</Link>
         </div>
       </div>

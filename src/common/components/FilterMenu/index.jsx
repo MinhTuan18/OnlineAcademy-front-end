@@ -1,12 +1,12 @@
-import { useState } from "react";
+import TreeList from "../TreeList";
 
-const FilterMenu = (categories) => {
-  const [seletectedNode, setSelectedNode] = useState('');
-  const renderCategoryMenu = categories => {
+const FilterMenu = () => {
 
-  }
   return(
-    <h2>Categories</h2>
+    <div>
+      <h2>Categories</h2>
+      <TreeList />
+    </div>
     
   )
 }

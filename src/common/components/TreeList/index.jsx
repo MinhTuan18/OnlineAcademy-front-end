@@ -1,49 +1,56 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
 import { BsCaretRightFill } from "react-icons/bs";
+import CourseListContext from "../../../context/CourseListContext";
 
 import './TreeList.scss';
+import TreeView from '@material-ui/lab/TreeView';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TreeItem from '@material-ui/lab/TreeItem';
+import { makeStyles } from '@material-ui/core/styles';
 
-const TreeNode = ({node}) => {
-  const [childVisible, setChildVisiblity] = useState(false);
-  const hasChild = node.subCategories ? true : false;
+const useStyles = makeStyles({
+  root: {
+    height: 240,
+    flexGrow: 1,
+    maxWidth: 400,
+  },
+});
 
-  return (
-    <li className="d-tree-node border-0">
-      <div className="d-flex">
-        {hasChild && (
-          <div onClick={(e) => setChildVisiblity((v) => !v)}
-            className={`d-inline d-tree-toggler ${
-              childVisible ? "active" : ""
-            }`}
-          >
-            <BsCaretRightFill/>
-          </div>
-        )}
-        <div className="col d-tree-head">
-          {node.name}
-        </div>
-      </div>
+const TreeList = () => {
 
-      {hasChild && childVisible && (
-        <div className="d-tree-content">
-          <ul className="d-flex d-tree-container flex-column">
-            <TreeList data={node.subCategories} />
-          </ul>
-        </div>
-      )}
-    </li>
+  const { categories: data, handleCategoryChange, handleSubCategoryChange } = useContext(CourseListContext);
+  const classes = useStyles();
+
+  const selectCategory = (event, nodeIds) => {
+    event.preventDefault();
+    handleCategoryChange(nodeIds);
+  };
+
+  const selectSubCategory = (event, nodeIds) => {
+    event.preventDefault()
+    handleSubCategoryChange(nodeIds);
+  };
+
+  const renderTree = (nodes) => (
+    <TreeItem key={nodes._id} nodeId={nodes._id} label={nodes.name} onLabelClick={(e => selectCategory(e, nodes._id))}>
+      {Array.isArray(nodes.subCategories) ? 
+        nodes.subCategories.map((node) => 
+          <TreeItem key={node._id} nodeId={node._id} label={node.name} onLabelClick={(e => selectSubCategory(e, node._id))}/>
+          ) 
+        : null}
+    </TreeItem>
   );
-}
 
-const TreeList = ({data = []}) => {
   return(
-    <div className="d-tree">
-      <ul className="d-flex d-tree-container flex-column">
-        {data.map((tree) => (
-          <TreeNode node={tree} />
-        ))}
-      </ul>
-    </div>
+    <TreeView
+      className={classes.root}
+      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultExpandIcon={<BsCaretRightFill/>}
+    >
+      {
+        data.map((nodes) => renderTree(nodes))
+      }
+    </TreeView>
   );
 }
 
