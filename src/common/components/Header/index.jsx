@@ -91,7 +91,7 @@ export const Header = () => {
                                     <li><Link>About Page</Link></li>
                                     <li><Link>Gallery</Link></li>
                                     <li><Link>Pricing Plans</Link></li>
-                                    <li><Link>FAQ'S</Link></li>
+                                    <li><Link>FAQ`&apos;`S</Link></li>
                                 </ul>
                             </li>
                             <li>

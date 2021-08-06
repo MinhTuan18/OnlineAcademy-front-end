@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './course-cat.css';
 
-const CourseCat = (props) => {
-    const { subcategoryList } = props;
+const CourseCat = ({ subcategoryList }) => {
     // console.log(subcategoryList);
     return (
         <section className="course-category-three">
@@ -17,7 +17,7 @@ const CourseCat = (props) => {
                     <div className="row">
                         {subcategoryList.map(subcategory => {
                             return (
-                                <div className="col-lg-3 col-md-6 col-sm-12">
+                                <div className="col-lg-3 col-md-6 col-sm-12" key={subcategory.id}>
                                     <div className="course-category-three__single">
                                         <img src={subcategory.subCategory.thumnailImageUrl ? subcategory.subCategory.thumnailImageUrl : '/images/course-category-1-1.png'} alt="" />
                                         <div className="course-category-three__content">
@@ -36,5 +36,9 @@ const CourseCat = (props) => {
         </section>
     );
 };
+
+CourseCat.propTypes = {
+    subcategoryList: PropTypes.array
+}
 
 export default CourseCat;

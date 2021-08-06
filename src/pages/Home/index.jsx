@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { HomeHeader } from '../../common/components/Header';
 import Slider from '../../common/components/Slider';
 import CourseCat from '../../common/components/HomeCourseCat';
@@ -17,6 +19,8 @@ import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategory
 // import { queryMostRegistedSubCategoryLast7Days } from '../../service/subcategories';
 
 const Home = () => {
+    const loggedIn = useSelector(state => state.auth.loggedIn);
+
     const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
     const [newestCourseList, setNewestCourseList] = useState([]);
@@ -39,7 +43,7 @@ const Home = () => {
     
     return (
         <>
-            <HomeHeader categoryList={categoryList}/>
+            <HomeHeader loggedIn={loggedIn}/>
             <Slider categoryList={categoryList}/>
             <CourseCat subcategoryList={mostRegisterSubCategoryList}/>
             <CallToActionOne/>
