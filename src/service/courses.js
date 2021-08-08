@@ -7,9 +7,9 @@ const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
 export const queryCoursesByAdvancedFilter = async (filter) => { 
     // console.log(END_POINT);
     // console.log(filter);
-    const title = filter.title ? filter.title : '';
-    const category = filter.category ? filter.category : '';
-    const subCategory = filter.subCategory ? filter.subCategory : '';
+    const title = filter?.title ? filter?.title : '';
+    const category = filter?.category ? filter?.category : '';
+    const subCategory = filter?.subCategory ? filter?.subCategory : '';
     // console.log(title + ' ' + category + ' ' + subCategory);
 
     let response;
@@ -35,7 +35,7 @@ export const queryCoursesByAdvancedFilter = async (filter) => {
         }
         else response = await axios.get(`${coursesBackendApiUrl}`);
     }
-    console.log(response);
+    // console.log(response);
     // const raw = response?.data ? response?.data : {};
     // return {
     //     courses: raw.courses,
