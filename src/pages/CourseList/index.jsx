@@ -28,15 +28,6 @@ const CourseList = (props) => {
     page: 1,
 		limit: PAGE_SIZE,
   });
-		
-	useEffect(() => {
-		setIsLoading(true);
-		
-		getCategories();
-		getHistory();
-
-		setIsLoading(false);
-	}, []);
 
 	const getCategories = async () => {
 		const allCategories = await getAllCategories();
@@ -71,6 +62,18 @@ const CourseList = (props) => {
 
 		createQuery(newQuery);
 	}
+
+	//When the component init
+	useEffect(() => {
+		setIsLoading(true);
+		
+		getCategories();
+		getHistory();
+
+		setIsLoading(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	//Handle selected Category change
 	const handleCategoryChange = (category) => {
 		let newQuery;
