@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
-import classnames from 'classnames';
 import css from './pagination-card.scss';
 import CourseListContext from '../../../context/CourseListContext';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PaginationCards = ({ totalPages }) => {
+const PaginationCards = ({ totalPages, current }) => {
   const pagesCount = totalPages;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(current);
 
   const { handlePageChange } = useContext(CourseListContext);
 
@@ -24,6 +22,9 @@ const PaginationCards = ({ totalPages }) => {
   
   const handleChange = (e, index) => {
     e.preventDefault();
+    if (index === currentPage) {
+      return;
+    }
     setCurrentPage(index);
     handlePageChange(index);
   };
@@ -33,7 +34,6 @@ const PaginationCards = ({ totalPages }) => {
   return (
     <div className={css.container}>
       <div className={classes.root}>
-        <Typography>Page: {currentPage}</Typography>
         <Pagination count={pagesCount} page={currentPage} onChange={handleChange} color="primary"/>
       </div>
     </div>

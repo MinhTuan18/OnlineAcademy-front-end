@@ -1,10 +1,9 @@
-import { React, useContext } from "react";
-import { BsCaretRightFill } from "react-icons/bs";
+import { React, useContext, useState } from "react";
+import { BsCaretRightFill,BsFillCaretDownFill } from "react-icons/bs";
 import CourseListContext from "../../../context/CourseListContext";
 
 import './TreeList.scss';
 import TreeView from '@material-ui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TreeItem from '@material-ui/lab/TreeItem';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -16,9 +15,21 @@ const useStyles = makeStyles({
   },
 });
 
-const TreeList = () => {
+const useItemStyles = makeStyles(() => ({
+  selected: {
+    
+    backgroundColor: 'red',
+  }
+}));
 
-  const { categories: data, handleCategoryChange, handleSubCategoryChange } = useContext(CourseListContext);
+
+const TreeList = () => {
+  const classesItem = useItemStyles();
+
+  const { categories: data, handleCategoryChange, handleSubCategoryChange, selectedCategory } = useContext(CourseListContext);
+
+  const [nodeSelected, setNodeSelected] = useState(selectedCategory);
+
   const classes = useStyles();
 
   const selectCategory = (event, nodeIds) => {
@@ -27,12 +38,21 @@ const TreeList = () => {
   };
 
   const selectSubCategory = (event, nodeIds) => {
-    event.preventDefault()
+    event.preventDefault();
     handleSubCategoryChange(nodeIds);
   };
 
+  const handleSelect = (_, nodeId) => {
+    
+    if (nodeSelected === nodeId) {
+      setNodeSelected('');
+    } else {
+      setNodeSelected(nodeId);
+    }
+  };
+
   const renderTree = (nodes) => (
-    <TreeItem key={nodes._id} nodeId={nodes._id} label={nodes.name} onLabelClick={(e => selectCategory(e, nodes._id))}>
+    <TreeItem classes={classesItem.selected} key={nodes._id} nodeId={nodes._id} label={nodes.name} onLabelClick={(e => selectCategory(e, nodes._id))}>
       {Array.isArray(nodes.subCategories) ? 
         nodes.subCategories.map((node) => 
           <TreeItem key={node._id} nodeId={node._id} label={node.name} onLabelClick={(e => selectSubCategory(e, node._id))}/>
@@ -44,8 +64,10 @@ const TreeList = () => {
   return(
     <TreeView
       className={classes.root}
-      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultCollapseIcon={<BsFillCaretDownFill />}
       defaultExpandIcon={<BsCaretRightFill/>}
+      selected={nodeSelected}
+      onNodeSelect={handleSelect}
     >
       {
         data.map((nodes) => renderTree(nodes))

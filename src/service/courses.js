@@ -4,6 +4,11 @@ import axios from 'axios';
 
 const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
 
+export const queryCourses = async (query) => {
+    const response = await axios.get(`${coursesBackendApiUrl}/getCourses/query`, { params: { ...query } });
+    const raw = response?.data ? response?.data : [];
+    return raw;
+}
 export const queryCoursesByAdvancedFilter = async (filter) => { 
     // console.log(END_POINT);
     // console.log(filter);
@@ -35,7 +40,6 @@ export const queryCoursesByAdvancedFilter = async (filter) => {
         }
         else response = await axios.get(`${coursesBackendApiUrl}`);
     }
-    console.log(response);
     // const raw = response?.data ? response?.data : {};
     // return {
     //     courses: raw.courses,

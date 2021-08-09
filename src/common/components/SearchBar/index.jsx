@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Button, Spinner, Container, Input, InputGroup, InputGroupAddon, Row, Col, Label } from 'reactstrap';
+import React, { useContext, useState } from 'react';
+import { Button, Input, InputGroup, InputGroupAddon, Row, Col, Label } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
 import './SearchBar.scss';
 import { courseSortOrder } from '../../utils/constant';
@@ -50,7 +50,7 @@ const SearchBar = ({ initQuery, initSortOrder}) => {
         </Col>
         <Col xs='2'>
           <InputGroup>
-            <Label for="sortSelect">Sort By</Label>
+            <Label className='sort-order-label' for="sortSelect">Sort By</Label>
             <Input type="select" name="select" id="sortSelect" onChange={sortOrder_Changed} value={initSortOrder}>
               { renderSortOrder }
             </Input>

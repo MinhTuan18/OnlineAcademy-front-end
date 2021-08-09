@@ -7,15 +7,15 @@ const PAGE_SIZE = 9;
 
 const courseSortOrder = [
   {
-    id: 'createdAt:des',
+    id: 'createdAt:desc',
     value: 'Newest',
   },
   {
-    id: 'rating:des',
+    id: 'rating:desc',
     value: 'Best Rated',
   },
   {
-    id: 'price:des',
+    id: 'price:desc',
     value: 'Price high to low',
   },
   {

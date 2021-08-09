@@ -5,7 +5,7 @@ import './course-card.scss';
 import StarRatings from 'react-star-ratings';
 
 
-const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings, lectureCount, price}) => {
+const CourseCard = ({id, img, category, instructorName, title, averageRating, totalRatings, fee}) => {
   const heartButtonClick = () => {
   }
   return(
@@ -18,18 +18,18 @@ const CourseCard = ({id, img, category, instructor, title, rating, numOfRatings,
         <Link to="/courses" className="course__category">{category}</Link>
         <div className="course__admin">
           <img src={img} alt="" />
-            by <Link>{instructor}</Link>
+            by <Link>{instructorName}</Link>
         </div>
-        <h2 className="course__title overflow-text" title={title}><Link>{title}</Link></h2>
+        <h2 className="course__title width ellipse two-lines" title={title}><Link>{title}</Link></h2>
         <div className="course__stars">
           <StarRatings className="course__stars-wrap"
-            rating={rating} starDimension="15px" starSpacing="0" starRatedColor="#f16101"
+            rating={averageRating} starDimension="15px" starSpacing="0" starRatedColor="#f16101"
           />
-          <span className="course__count">{rating}</span>
-          <span className="course__stars-count">{numOfRatings}</span>
+          <span className="course__count">{averageRating}</span>
+          <span className="course__stars-count">{totalRatings}</span>
         </div>
         <div className="course__meta">
-          <Link>{price}</Link>
+          <Link>{fee}</Link>
         </div>
       </div>
     </Link>

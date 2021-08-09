@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { END_POINT, } from '../config';
 
-const categoriesBackendApiUrl = `https://online-academy-backend.herokuapp.com/api/categories`;
+const categoriesBackendApiUrl = `http://localhost:3000/api/categories`;
 
 
 export const getAllCategories = async () => { 
