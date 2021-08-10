@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import ChangePassword from './pages/ChangePassword';
 import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
+import UserCourses from './pages/UserCourses';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/course/:courseId' component={CourseDetail}/>
             <Redirect from="/course" to="/courses" />
             <PrivateRoute path='/user-profile' component={UserProfile}/>
+            <PrivateRoute path='/my-courses' component={UserCourses}/>
 
           </Switch>
         </div>

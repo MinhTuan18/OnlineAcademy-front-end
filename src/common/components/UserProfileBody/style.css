@@ -28,3 +28,11 @@
     border-width: 2px;
     border-color: #f1f1f1;
   }
+  .my-courses-tab {
+      width: 250px;
+  }
+
+  .dash {
+      width: 100%;
+      border-bottom: 5px solid #2da397;
+  }

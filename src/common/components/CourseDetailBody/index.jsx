@@ -32,7 +32,7 @@ export default function CourseDetailBody({ courseInfo }) {
                                             <span className="course-one__stars-wrap">
                                                 &nbsp;<i className="fa fa-star"></i>
                                             </span>
-                                            <span className="course-one__stars-count">xxxxxxxxxxxxxx</span>
+                                            <span>&nbsp;(xx ratings) xx students</span>
                                         </div>
                                         <div className="course-details__info">
                                             Created by <Link to="#">Addie Walters</Link>
