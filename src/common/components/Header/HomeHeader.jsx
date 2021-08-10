@@ -63,7 +63,7 @@ export const HomeHeader = ({ loggedIn }) => {
                     </div>
                     { (loggedIn || accessToken) ? (
                         <div className="topbar-one__right">
-                            <Link>{localStorage.getItem('userName')}</Link>
+                            <Link to="/user-profile">{localStorage.getItem('userName')}</Link>
                             <Link onClick={onLogoutClick}>Logout</Link>
                         </div>
                     ) : 

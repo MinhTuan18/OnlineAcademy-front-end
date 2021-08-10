@@ -56,3 +56,9 @@ export const queryNewestCourses = async () => {
     const raw = response?.data ? response?.data : [];
     return raw;
 }
+
+export const queryCourseById = async (courseId) => {
+    const response = await axios.get(`${coursesBackendApiUrl}/${courseId}`)
+    const raw = response?.data ? response?.data : []
+    return raw
+}
