@@ -4,10 +4,18 @@ import React, { useEffect } from 'react';
 import './slider.css';
 import { Carousel } from 'react-bootstrap'
 import { useState } from 'react';
+<<<<<<< HEAD
 import { queryCoursesByAdvancedFilter, } from '../../../service';
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
 
+=======
+//import { queryCoursesByAdvancedFilter, } from '../../../service';
+import PropTypes from 'prop-types';
+
+
+
+>>>>>>> 5d128bd96b803f6ed6102c365b2e8c53aad524f9
 const Slider = ({ categoryList }) => {
 
     // const [swiper, setSwiper] = useState(null);

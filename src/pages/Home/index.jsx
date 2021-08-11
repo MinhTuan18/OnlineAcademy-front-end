@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { HomeHeader } from '../../common/components/Header';
 import Slider from '../../common/components/Slider';
@@ -20,9 +20,8 @@ import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategory
 
 const Home = () => {
     const loggedIn = useSelector(state => state.auth.loggedIn);
-    const watchList = useSelector(state => state.student.watchList);
+    // const watchList = useSelector(state => state.student.watchList);
     // console.log(watchList);
-    const dispatch = useDispatch();
 
     const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
