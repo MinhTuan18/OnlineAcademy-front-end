@@ -157,7 +157,7 @@ export const HomeHeader = ({ loggedIn }) => {
 }
 
 HomeHeader.propTypes = {
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
 }
 
 

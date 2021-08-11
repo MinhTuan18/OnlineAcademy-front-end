@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { HomeHeader } from '../../common/components/Header';
 import Slider from '../../common/components/Slider';
@@ -15,11 +15,14 @@ import CallToActionThree from '../../common/components/CallToActionThree';
 import Footer from '../../common/components/Footer';
 // import CourseFigure from '../../common/components/CourseFigure';
 import { getAllCategories } from '../../service/categories';
-import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategoryLast7Days } from '../../service';
+import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategoryLast7Days,  } from '../../service';
 // import { queryMostRegistedSubCategoryLast7Days } from '../../service/subcategories';
 
 const Home = () => {
     const loggedIn = useSelector(state => state.auth.loggedIn);
+    const watchList = useSelector(state => state.student.watchList);
+    // console.log(watchList);
+    const dispatch = useDispatch();
 
     const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
@@ -38,6 +41,7 @@ const Home = () => {
             setNewestCourseList(newestCourses);
             const mostRegisterSubCategories = await queryMostRegistedSubCategoryLast7Days();
             setMostRegisterSubCategoryList(mostRegisterSubCategories);
+            const accessToken = localStorage.getItem('access_token');
         }, 300);
     }, [])
     

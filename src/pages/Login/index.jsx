@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import Footer from '../../common/components/Footer';
 import { Header } from "../../common/components/Header";
 import LoginForm from '../../common/components/LoginForm';
-import { setUserInfo } from '../../reducers';
+import { setStudentWatchList, setUserInfo } from '../../reducers';
 import { login } from '../../service';
 
 const Login = () => {
@@ -44,6 +44,8 @@ const Login = () => {
         console.log(userdata);
         if (userdata) {
             dispatch(setUserInfo(userdata));
+            // console.log(userdata.user.watchList);
+            dispatch(setStudentWatchList(userdata.user.watchList));
         }
     }
     return (
