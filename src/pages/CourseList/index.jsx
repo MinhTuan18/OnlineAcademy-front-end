@@ -71,7 +71,6 @@ const CourseList = (props) => {
 		getHistory();
 
 		setIsLoading(false);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	//Handle selected Category change
@@ -162,7 +161,7 @@ const CourseList = (props) => {
 	//Render course list
 	const renderCourseList = courseList.map(course => {
 		const { id, img, category, instructorName, title, averageRating, totalRatings, lectureCount, fee } = course;
-		return <CourseCard id={id} img={img} category={category} instructorName={instructorName} title={title} 
+		return <CourseCard key={id} id={id} img={img} category={category} instructorName={instructorName} title={title} 
 		averageRating={averageRating} totalRatings={totalRatings} lectureCount={lectureCount} fee={fee}/>
 	})
 

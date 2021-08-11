@@ -1,0 +1,283 @@
+/*
+* 10. become-teacher styles
+*/
+.become-teacher {
+    padding-top: 120px;
+  }
+  
+  .become-teacher__form {
+    position: relative;
+  }
+  .become-teacher__form:before {
+    content: '';
+    width: 197px;
+    height: 268px;
+    background-image: url(../../../resources/images/dot-pattern-1-1.png);
+    position: absolute;
+    bottom: -11%;
+    left: 87%;
+    z-index: -1;
+  }
+  .become-teacher__form-top {
+    background-color: #2da397;
+    padding-left: 60px;
+    position: relative;
+  }
+  .become-teacher__form-top::before {
+    content: '';
+    width: 38px;
+    height: 10px;
+    background-image: url(../../../resources/images/become-form-angle.png);
+    background-position: 0 0;
+    position: absolute;
+    top: 100%;
+    left: 60px;
+  }
+  .become-teacher__form-title {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    padding: 29px 0;
+  }
+  .become-teacher__form-content {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f1f1f1;
+    background-color: white;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .become-teacher__form input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: #f1f1f1;
+    height: 77px;
+    font-size: 16px;
+    color: #81868a;
+    font-weight: 500;
+    padding-left: 40px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .become-teacher__form input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #81868a;
+  }
+  .become-teacher__form input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #81868a;
+  }
+  .become-teacher__form input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #81868a;
+  }
+  .become-teacher__form input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #81868a;
+  }
+  .become-teacher__form label {
+    display: block;
+  }
+  .become-teacher__form-btn {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    padding: 21.5px 58px;
+    margin-left: 35%;
+    
+
+  }
+  .become-teacher__form-btn:hover {
+    background-color: #012237;
+    color: #fff;
+  }
+  
+  .become-teacher__title {
+    margin: 0;
+    color: #012237;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+  
+  .become-teacher__subtitle {
+    font-size: 20px;
+    color: #012237;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .become-teacher__text {
+    font-size: 16px;
+    line-height: 34px;
+    font-weight: 500;
+    color: #81868a;
+    margin: 0;
+  }
+
+  /*
+* 4. contact styles
+*/
+.google-map__contact {
+    display: block;
+    width: 100%;
+    height: 560px;
+    border: none;
+    outline: none;
+  }
+  
+  .contact-info-one {
+    padding-top: 120px;
+  }
+  .contact-info-one__title {
+    margin: 0;
+    color: #012237;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 55px;
+  }
+  .contact-info-one__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 34px;
+    font-weight: 500;
+    color: #81868a;
+    margin-top: -15px;
+    margin-bottom: -10px;
+  }
+  .contact-info-one__icon {
+    width: 112px;
+    height: 112px;
+    background-color: #f16101;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  .contact-info-one__icon::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 2px solid #f16101;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border-radius: 50%;
+  }
+  .contact-info-one__icon i {
+    font-size: 54px;
+    color: #fff;
+  }
+  .contact-info-one [class*=col-lg-]:nth-child(2) .contact-info-one__icon {
+    background-color: #2da397;
+  }
+  .contact-info-one [class*=col-lg-]:nth-child(2) .contact-info-one__icon::before {
+    border-color: #2da397;
+  }
+  .contact-info-one [class*=col-lg-]:nth-child(3) .contact-info-one__icon {
+    background-color: #7c4bc0;
+  }
+  .contact-info-one [class*=col-lg-]:nth-child(3) .contact-info-one__icon::before {
+    border-color: #7c4bc0;
+  }
+  
+  .contact-info-one__single {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f1f1f1;
+    background-color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: -webkit-box-shadow .4s ease;
+    transition: -webkit-box-shadow .4s ease;
+    transition: box-shadow .4s ease;
+    transition: box-shadow .4s ease, -webkit-box-shadow .4s ease;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .contact-info-one__single:hover {
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);
+  }
+  .contact-info-one__single:hover .contact-info-one__icon:before {
+    left: 0;
+  }
+  
+  .contact-one {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  @media (min-width: 1200px) {
+    .contact-one .container {
+      max-width: 800px;
+    }
+  }
+  .contact-one__title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #012237;
+    margin: 0;
+    margin-bottom: 45px;
+  }
+  .contact-one input,
+  .contact-one textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    display: block;
+    background-color: #f1f1f1;
+    height: 77px;
+    padding-left: 40px;
+    margin-bottom: 10px;
+  }
+  .contact-one textarea {
+    height: 211px;
+    padding-top: 25px;
+  }
+  .contact-one .row.low-gutters {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  .contact-one .row.low-gutters > [class*=col-] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .contact-one__btn {
+    padding: 22px 72px;
+  }
+  .contact-one__btn:hover {
+    background-color: #012237;
+    color: #fff;
+  }
