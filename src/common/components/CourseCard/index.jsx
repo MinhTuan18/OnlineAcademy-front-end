@@ -4,7 +4,7 @@ import 'swiper/swiper.min.css';
 import './course-card.scss';
 import StarRatings from 'react-star-ratings';
 
-
+// eslint-disable-next-line react/prop-types
 const CourseCard = ({id, img, category, instructorName, title, averageRating, totalRatings, fee}) => {
   const heartButtonClick = () => {
   }

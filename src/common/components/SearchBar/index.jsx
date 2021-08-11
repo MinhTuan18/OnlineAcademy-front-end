@@ -29,7 +29,7 @@ const SearchBar = ({ initQuery, initSortOrder}) => {
     handleSortChange(e.target.value)
   }
   const renderSortOrder = courseSortOrder.map((sortOrder) => {
-      return <option value={sortOrder.id}>{ sortOrder.value }</option>
+      return <option key={sortOrder.id} value={sortOrder.id}>{ sortOrder.value }</option>
     
     })
   return (

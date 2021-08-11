@@ -1,3 +1,4 @@
+import React from 'react';
 import TreeList from "../TreeList";
 
 const FilterMenu = () => {
