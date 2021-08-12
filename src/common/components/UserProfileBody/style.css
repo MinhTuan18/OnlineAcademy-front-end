@@ -17,8 +17,8 @@
     margin: 0;
     color: #fff;
     font-weight: 700;
-    font-size: 24px;
-    padding: 29px 0;
+    font-size: 15px;
+    padding: 20px 0;
   }
 
   .user-profile__form-second {
@@ -29,10 +29,10 @@
     border-color: #f1f1f1;
   }
   .my-courses-tab {
-      width: 250px;
+      width: 200px;
   }
 
-  .dash {
-      width: 100%;
-      border-bottom: 5px solid #2da397;
+
+  .active-tab {
+    border-top: 2px solid #2da397;
   }

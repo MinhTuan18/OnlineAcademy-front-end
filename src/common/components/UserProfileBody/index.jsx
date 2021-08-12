@@ -28,13 +28,20 @@ export default function UserProfileBody(props) {
                                     </h2>
                                 </div>
                             </Link>
+                            <Link to="/my-courses">
+                                <div className="user-profile__form-second">
+                                    <h2 className="user-profile__form-title" style={{color: "#81868a", borderTopWidth: "10px"}}>
+                                        Courses Management
+                                    </h2>
+                                </div>
+                            </Link>
                             
                         </div>
                         <div className="col-lg-9" style={{padding: '0'}}>
                             <div className="become-teacher__form">
                                 <form className="become-teacher__form-content contact-form-validated" noValidate="novalidate" style={{borderColor: "#2da397"}}>
-                                    <input type="text" placeholder="Name" value="abcs" style={{marginBottom: "50px"}}/>
-                                    <input type="email" placeholder="Email" value="asdasdads@asdasd" style={{marginBottom: "50px"}}/>
+                                    <input type="text" placeholder="Name" value="abcs" />
+                                    <input type="email" placeholder="Email" value="asdasdads@asdasd"    />
                                     <button type="submit" className="thm-btn become-teacher__form-btn">Save</button>
                                 </form>
                             </div>

@@ -15,24 +15,25 @@ export default function UserCoursesBody(props) {
                 </div>
                 <div className="container" style={{marginTop: "-120px"}}>
                     <div className="row">
-                        <div style={{display: "flex"}} className="dash">
+                        <div style={{display: "flex"}}>
                             <div className="user-profile__form-top my-courses-tab">
                                 <h2 className="user-profile__form-title">
                                     My Courses
                                 </h2>
                             </div>
-                            <Link to="/wishlist">
+                            <Link to="/watchlist">
                                 <div className="user-profile__form-second my-courses-tab">
                                     <h2 className="user-profile__form-title" style={{color: "#81868a"}}>
-                                        Wishlist
+                                        Watchlist
                                     </h2>
                                 </div>
                             </Link>
-                            
                         </div>
                     </div>
 
-                    abc
+                    <div className="row active-tab">
+                    abc                        
+                    </div>
 
 
 

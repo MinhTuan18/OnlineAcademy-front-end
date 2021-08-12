@@ -15,7 +15,7 @@ import ChangePassword from './pages/ChangePassword';
 import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
-import Wishlist from './pages/Wishlist/Wishlist';
+import Watchlist from './pages/Watchlist/Watchlist';
 
 function App() {
 
@@ -42,7 +42,7 @@ function App() {
             <Redirect from="/course" to="/courses" />
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
-            <PrivateRoute path='/wishlist' component={Wishlist}/>
+            <PrivateRoute path='/watchlist' component={Watchlist}/>
           </Switch>
         </div>
     </Router>

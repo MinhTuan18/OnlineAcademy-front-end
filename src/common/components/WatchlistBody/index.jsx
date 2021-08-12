@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function WishlistBody(props) {
+export default function WatchlistBody(props) {
     
 
     return (
@@ -9,12 +9,12 @@ export default function WishlistBody(props) {
             <div style={{marginBottom: "50px"}}>
                 <div className="contact-one">
                     <div className="container">
-                        <h2 className="contact-one__title text-center" >Wishlist</h2>
+                        <h2 className="contact-one__title text-center" >Watchlist</h2>
                     </div>
                 </div>
                 <div className="container" style={{marginTop: "-120px"}}>
                     <div className="row">
-                        <div style={{display: "flex"}} className="dash">
+                        <div style={{display: "flex"}}>
                             <Link to="/my-courses">
                                 <div className="user-profile__form-second my-courses-tab">
                                     <h2 className="user-profile__form-title" style={{color: "#81868a"}}>
@@ -24,14 +24,16 @@ export default function WishlistBody(props) {
                             </Link>
                             <div className="user-profile__form-top my-courses-tab">
                                 <h2 className="user-profile__form-title">
-                                    Wishlist
+                                    Watchlist
                                 </h2>
                             </div>
                             
                         </div>
                     </div>
 
-                    wlb
+                    <div className="row active-tab">
+                    wlb                       
+                    </div>
 
 
                 </div>
