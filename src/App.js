@@ -16,6 +16,8 @@ import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
 import Wishlist from './pages/Wishlist/Wishlist';
+import UploadImage from './common/components/UploadImage';
+
 
 function App() {
 
@@ -43,6 +45,7 @@ function App() {
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
             <PrivateRoute path='/wishlist' component={Wishlist}/>
+            <Route path='/upload' component={UploadImage} />
           </Switch>
         </div>
     </Router>
