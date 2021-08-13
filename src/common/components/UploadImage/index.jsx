@@ -8,8 +8,6 @@ const Upload = () => {
     const [fileInputState, setFileInputState] = useState('');
     const [previewSource, setPreviewSource] = useState('');
     const [selectedFile, setSelectedFile] = useState();
-    const [successMsg, setSuccessMsg] = useState('');
-    const [errMsg, setErrMsg] = useState('');
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         previewFile(file);
@@ -28,45 +26,21 @@ const Upload = () => {
     const handleSubmitFile = async(e) => {
         e.preventDefault();
 
-        // e.preventDefault();
-        // if (!selectedFile) return;
-        // const reader = new FileReader();
-        // reader.readAsDataURL(selectedFile);
-        // reader.onloadend = () => {
-        //     uploadImage(reader.result);
-        // };
-        // reader.onerror = () => {
-        //     console.error('AHHHHHHHH!!');
-        //     setErrMsg('something went wrong!');
-        // };
+        
         const formData = new FormData();
         formData.append('file', selectedFile);
         console.log(formData)
 
-    try {
-      const res = await axios.post('http://localhost:3000/upload', formData);
-      
-      
-    } catch (err) {
-      console.log(err);
-    }
+        try {
+        const res = await axios.post('http://localhost:3000/upload', formData);
+        
+        
+        } catch (err) {
+        console.log(err);
+        }
     };
 
-    // const uploadImage = async (base64EncodedImage) => {
-    //     try {
-    //         await fetch('/api/upload', {
-    //             method: 'POST',
-    //             body: JSON.stringify({ data: base64EncodedImage }),
-    //             headers: { 'Content-Type': 'application/json' },
-    //         });
-    //         setFileInputState('');
-    //         setPreviewSource('');
-    //         setSuccessMsg('Image uploaded successfully');
-    //     } catch (err) {
-    //         console.error(err);
-    //         setErrMsg('Something went wrong!');
-    //     }
-    // };
+    
     return (
         <div>
             <h1 className="title">Upload an Image</h1>
