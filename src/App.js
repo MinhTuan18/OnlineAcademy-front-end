@@ -44,7 +44,7 @@ function App() {
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
             <PrivateRoute path='/watchlist' component={Watchlist}/>
-            <PrivateRoute path='/learn' component={Learning}/>
+            <Route path='/learn' component={Learning}/>
           </Switch>
         </div>
     </Router>

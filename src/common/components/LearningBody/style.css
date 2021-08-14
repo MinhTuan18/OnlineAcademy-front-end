@@ -1,38 +1,73 @@
+.learning-container {
+  margin-top: 50px;
+}
+.top-bar {
+  background-color: #012237;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border-bottom: 1px solid rgb(68, 68, 68);
+  padding: 0 0 0 20px;
+}
+.top-bar div:last-child {
+  margin-left: auto;
+}
+.top-bar-item {
+  padding-right: 20px;
+  color: white;
+}
+.top-bar-link {
+  font-weight: bold;
+  color: white;
+}
+.main {
+  margin-right: 25%;
+}
+.lesson-title {
+  height: 75px; /* Full-height: remove this if you want "auto" height */
+  width: 25%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 50px;
+  right: 0;
+  background-color: #022c46; /* Black */
+  overflow: hidden; /* Disable horizontal scroll */
+  display: flex;
+  padding: 5px 0 5px 20px;
+  font-weight: bold;
+  color: white;
+  align-items: center;
+  border: 1px solid rgb(68, 68, 68);
+}
 .lesson-list {
     height: auto; /* Full-height: remove this if you want "auto" height */
     width: 25%; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     display: block;
     z-index: 1; /* Stay on top */
-    top: 135px; /* Stay at the top */
+    top: 125px; /* Stay at the top */
     right: 0px;
     bottom: 0px;
-    background-color: #111; /* Black */
+    background-color: white; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
-
+    border-left: 1px solid rgb(212, 212, 212);
 }
-
-.main {
-  margin-right: 25%;
+.lesson-item {
+  min-height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(212, 212, 212);
 }
-.titleaaa {
-  height: 50px; /* Full-height: remove this if you want "auto" height */
-  width: 25%; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 85px;
-  right: 0;
-  background-color: #111; /* Black */
-  overflow: hidden; /* Disable horizontal scroll */
+.lesson-item-icon {
+  color: #f16101;
+  margin-right: 10px;
 }
-
-.abcabc {
-  margin-top: 200px;
-  display: block;
-  overflow-y: auto;
-
-}
-
-.learning-container {
-  margin-top: 85px;
+.description-section {
+  margin: 20px;
+  border-bottom: 1px solid rgb(212, 212, 212);
 }

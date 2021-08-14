@@ -21,7 +21,7 @@ export default function UserCoursesBody(props) {
                                     My Courses
                                 </h2>
                             </div>
-                            <Link to="/watchlist">
+                            <Link replace to="/watchlist">
                                 <div className="user-profile__form-second my-courses-tab">
                                     <h2 className="user-profile__form-title" style={{color: "#81868a"}}>
                                         Watchlist

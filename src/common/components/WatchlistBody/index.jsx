@@ -15,7 +15,7 @@ export default function WatchlistBody(props) {
                 <div className="container" style={{marginTop: "-120px"}}>
                     <div className="row">
                         <div style={{display: "flex"}}>
-                            <Link to="/my-courses">
+                            <Link replace to="/my-courses">
                                 <div className="user-profile__form-second my-courses-tab">
                                     <h2 className="user-profile__form-title" style={{color: "#81868a"}}>
                                         My Courses
