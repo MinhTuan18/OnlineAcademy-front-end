@@ -16,6 +16,7 @@ import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
 import Watchlist from './pages/Watchlist/Watchlist';
+import Learning from './pages/Learning';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
             <PrivateRoute path='/watchlist' component={Watchlist}/>
+            <PrivateRoute path='/learn' component={Learning}/>
           </Switch>
         </div>
     </Router>

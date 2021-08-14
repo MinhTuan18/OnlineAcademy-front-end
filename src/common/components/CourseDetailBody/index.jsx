@@ -11,6 +11,9 @@ CourseDetailBody.propTypes = {
 
 export default function CourseDetailBody({ courseInfo }) {
 
+    let amountStudents = courseInfo.registeredStudents === undefined ? 0 : courseInfo.registeredStudents.length;
+    let amountReviews = courseInfo.comments === undefined ? 0 : courseInfo.comments.length;
+    
     return (
         <>
             <section className="course-details">
@@ -32,7 +35,7 @@ export default function CourseDetailBody({ courseInfo }) {
                                             <span className="course-one__stars-wrap">
                                                 &nbsp;<i className="fa fa-star"></i>
                                             </span>
-                                            <span>&nbsp;(xx ratings) xx students</span>
+                                            <span>&nbsp;({amountReviews} rating(s)) {amountStudents} student(s)</span>
                                         </div>
                                         <div className="course-details__info">
                                             Created by <Link to="#">Addie Walters</Link>
