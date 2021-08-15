@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import { userInfo as getUserInfo} from '../../../service/user';
+import CourseFigureById from '../CourseFigureById';
 
 export default function WatchlistBody(props) {
     
+    const [userInfo, setUserInfo] = useState({watchlist:[]});
+
+    useEffect(() => {
+        const fetch = async () => {
+            const user = await getUserInfo(localStorage.getItem('userId'));
+            setUserInfo(user);
+        }
+
+        fetch();
+    }, [])
 
     return (
         <>
@@ -32,7 +44,14 @@ export default function WatchlistBody(props) {
                     </div>
 
                     <div className="row active-tab">
-                    wlb                       
+                    {userInfo.watchlist?
+                    userInfo.watchlist.map(c => {
+                        return ( 
+                            <div key={c}>
+                                <CourseFigureById courseId={c}></CourseFigureById>
+                            </div>
+                        )
+                    }):''}                    
                     </div>
 
 

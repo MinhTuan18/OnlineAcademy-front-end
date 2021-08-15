@@ -12,11 +12,13 @@ export default function CourseDetail(props) {
     const [courseInfo, setCourseInfo] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        
         const getData = async function () {
             const course = await queryCourseById(courseId)
             setCourseInfo(course.data)
         }
-
+        
         getData()
     }, [])
 

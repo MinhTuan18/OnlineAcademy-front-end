@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../UserProfileBody/style.css';
+import { userInfo as getUserInfo} from '../../../service/user'
+import CourseFigureById from '../CourseFigureById';
 
 export default function UserCoursesBody(props) {
-    
+
+    const [userInfo, setUserInfo] = useState({registeredCourses:[]});
+
+    useEffect(() => {
+        const fetch = async () => {
+            const user = await getUserInfo(localStorage.getItem('userId'));
+            setUserInfo(user);
+        }
+
+        fetch();
+    }, [])
 
     return (
         <>
@@ -32,7 +44,14 @@ export default function UserCoursesBody(props) {
                     </div>
 
                     <div className="row active-tab">
-                    abc                        
+                    {userInfo.registeredCourses?
+                    userInfo.registeredCourses.map(c => {
+                        return ( 
+                            <div key={c}>
+                                <CourseFigureById courseId={c}></CourseFigureById>
+                            </div>
+                        )
+                    }):''}                          
                     </div>
 
 

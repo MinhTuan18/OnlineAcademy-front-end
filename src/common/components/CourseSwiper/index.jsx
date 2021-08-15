@@ -54,7 +54,7 @@ const CourseSwiper = ( { type, courseList } ) => {
                         <Swiper {...params} >
                             {courseList.map(course => {
                                 return (
-                                    <div className="item" key={course.id}>
+                                    <div className="item" key={course._id}>
                                         <div className="course-one__single color-4">
                                             <div className="course-one__image">
                                                 <img src={course.thumbnailImageUrl ? course.thumbnailImageUrl : "/images/course-1-1.jpg"} alt="course" />
@@ -66,7 +66,7 @@ const CourseSwiper = ( { type, courseList } ) => {
                                                     <img src="/images/team-1-1.jpg" alt="" />
                                                     by <Link>{course.instructorName ? course.instructorName : "Unknown"}</Link>
                                                 </div>
-                                                <h2 className="course-one__title"><Link>{course.title}</Link></h2>
+                                                <h2 className="course-one__title"><Link to={`/course/${course._id}`}>{course.title}</Link></h2>
                                                 <div className="course-one__stars">
                                                     <span className="course-one__stars-wrap">
                                                         <i className="fa fa-star"></i>

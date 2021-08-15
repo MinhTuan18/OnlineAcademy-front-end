@@ -1,9 +1,14 @@
 import React from 'react'
+import { PropTypes } from 'prop-types';
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom'
 import './style.css'
 
-export default function LearningBody(props) {
+LearningBody.propTypes = {
+    courseInfo: PropTypes.object,
+}
+
+export default function LearningBody({courseInfo}) {
 
 
     return (
@@ -11,7 +16,7 @@ export default function LearningBody(props) {
             <div className="top-bar">
                 <div className="top-bar-item">
                     <Link to="/" style={{ display: "flex" }}>
-                        <img src="images/icons/favicon-32x32.png" />
+                        <img src="/images/icons/favicon-32x32.png" />
                         <div className="top-bar-link">
                             &nbsp;Online Academy
                         </div>
@@ -20,17 +25,28 @@ export default function LearningBody(props) {
                 <div className="top-bar-item">
                     <span>|</span>
                 </div>
-                <div className="top-bar-item" style={{textTransform: "uppercase"}}>
-                    <span>Title</span>
+                <div className="top-bar-item" style={{ textTransform: "uppercase" }}>
+                    <span>{courseInfo.title}</span>
                 </div>
-                <div className="top-bar-item">
-                    <Link to="/user-profile">
-                        <div className="top-bar-link">
-                            My profile
-                            &nbsp;&nbsp;&nbsp;
-                            <i className="fa fa-user-circle"></i>
-                        </div>
-                    </Link>
+                <div className="top-bar-item" style={{ display: 'flex' }}>
+                    <div className="top-bar-item">
+                        <Link to="/my-courses">
+                            <div className="top-bar-link">
+                                My courses
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="top-bar-item">
+                        <span>|</span>
+                    </div>
+                    <div className="top-bar-item">
+                        <Link to="/user-profile">
+                            <div className="top-bar-link">
+                                <i className="fa fa-user-circle"></i>
+                            </div>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
             <div className="learning-container">
