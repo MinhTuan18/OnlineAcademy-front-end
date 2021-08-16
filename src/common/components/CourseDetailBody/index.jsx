@@ -4,16 +4,46 @@ import './style.css';
 import { PropTypes } from 'prop-types';
 import CourseReviews from '../CourseReviews';
 import SuggestedCourses from '../SuggestedCourses';
+import { userInfo as getUserInfo, updateWatchlist} from '../../../service/user';
+
 
 CourseDetailBody.propTypes = {
     courseInfo: PropTypes.object,
+    loggedIn: PropTypes.bool
+
 }
 
-export default function CourseDetailBody({ courseInfo }) {
+export default function CourseDetailBody({ courseInfo, loggedIn }) {
+
+    const [userInfo, setUserInfo] = useState({registedCourse: [], watchlist:[]});
+    const [change, setChange] = useState(0)
+
+    useEffect(() => {
+        const fetch = async () => {
+            const user = await getUserInfo(localStorage.getItem('userId'));
+            setUserInfo(user);
+        }
+
+            fetch();
+    }, [change])
 
     let amountStudents = courseInfo.registeredStudents === undefined ? 0 : courseInfo.registeredStudents.length;
     let amountReviews = courseInfo.comments === undefined ? 0 : courseInfo.comments.length;
     
+    const WatchlistToggleClick = async (e) =>{
+        e.preventDefault()
+        const result =await updateWatchlist(localStorage.getItem('userId'), courseInfo._id)
+        if(result)
+        {
+            console.log(result)
+            console.log(change)
+        setChange(change => change +1);
+        }
+        
+    //     await setTimeout(()=>{
+    // }, 500)
+    }
+
     return (
         <>
             <section className="course-details">
@@ -56,7 +86,9 @@ export default function CourseDetailBody({ courseInfo }) {
                                     <p>{(courseInfo.discount ? '(' + courseInfo.discount + '% off)' : '')}</p>
                                     <div>
                                         <button className="thm-btn course-details__price-btn">Buy This Course</button>
-                                        <button className="thm-btn course-details__price-btn"><i className="far fa-heart"></i></button>
+                                        <button className="thm-btn course-details__price-btn" onClick={WatchlistToggleClick}><i className={`far fa-heart ${
+                                             userInfo.watchlist.includes(courseInfo._id)? 'fa':''
+                                         }`}></i></button>
                                     </div>
                                 </div>
                             </div>
