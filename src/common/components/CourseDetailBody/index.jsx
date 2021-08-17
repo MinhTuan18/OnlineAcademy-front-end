@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './style.css';
 import { PropTypes } from 'prop-types';
 import CourseReviews from '../CourseReviews';
 import SuggestedCourses from '../SuggestedCourses';
-import { userInfo as getUserInfo, updateWatchlist} from '../../../service/user';
+import { userInfo as getUserInfo, toggleWatchlist, buyCourse} from '../../../service/user';
 
 
 CourseDetailBody.propTypes = {
@@ -15,8 +15,9 @@ CourseDetailBody.propTypes = {
 
 export default function CourseDetailBody({ courseInfo, loggedIn }) {
 
-    const [userInfo, setUserInfo] = useState({registedCourse: [], watchlist:[]});
+    const [userInfo, setUserInfo] = useState({registeredCourses: [], watchlist:[]});
     const [change, setChange] = useState(0)
+    const history = useHistory();
 
     useEffect(() => {
         const fetch = async () => {
@@ -32,16 +33,26 @@ export default function CourseDetailBody({ courseInfo, loggedIn }) {
     
     const WatchlistToggleClick = async (e) =>{
         e.preventDefault()
-        const result =await updateWatchlist(localStorage.getItem('userId'), courseInfo._id)
+        if(!userInfo._id) {
+            history.push('/login')
+        }
+        const result = await toggleWatchlist(localStorage.getItem('userId'), courseInfo._id)
         if(result)
         {
-            console.log(result)
-            console.log(change)
-        setChange(change => change +1);
+            setChange(change => change +1);
         }
-        
-    //     await setTimeout(()=>{
-    // }, 500)
+    }
+
+    const BuyThisCourse= async (e) => {
+        e.preventDefault()
+        if(!localStorage.getItem('userId')) {
+            history.push('/login')
+        }
+        const result = await buyCourse(localStorage.getItem('userId'), courseInfo._id)
+        if(result)
+        {
+            setChange(change => change +1);
+        }
     }
 
     return (
@@ -85,7 +96,10 @@ export default function CourseDetailBody({ courseInfo, loggedIn }) {
                                     <p className="course-details__price-amount">{(courseInfo.fee !== undefined ? courseInfo.fee : '') + ' VND'}</p>
                                     <p>{(courseInfo.discount ? '(' + courseInfo.discount + '% off)' : '')}</p>
                                     <div>
-                                        <button className="thm-btn course-details__price-btn">Buy This Course</button>
+                                    {userInfo.registeredCourses.includes(courseInfo._id)
+                                    ? <Link to={`/learn/${courseInfo._id}`} ><button className="thm-btn course-details__price-btn">Learn now</button> </Link>
+                                    : <button onClick={BuyThisCourse} className="thm-btn course-details__price-btn">Buy This Course</button>}
+                                        
                                         <button className="thm-btn course-details__price-btn" onClick={WatchlistToggleClick}><i className={`far fa-heart ${
                                              userInfo.watchlist.includes(courseInfo._id)? 'fa':''
                                          }`}></i></button>

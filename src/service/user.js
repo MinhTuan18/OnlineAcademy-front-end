@@ -15,7 +15,7 @@ export const userInfo = async (id) => {
     return raw;
 }
 
-export const updateWatchlist = async (id, courseId) => {
+export const toggleWatchlist = async (id, courseId) => {
     const accessToken = localStorage.getItem('access_token');
     const axiosConfig = {
         headers: {
@@ -23,6 +23,18 @@ export const updateWatchlist = async (id, courseId) => {
         }
     };
     const response = await axios.post(`${userBackendApiUrl}/${id}/update-watchlist`, {courseId}, axiosConfig);
+    const result = response?.data?.success === true ? response?.data?.success : false;
+    return result;
+}
+
+export const buyCourse = async (id, courseId) => {
+    const accessToken = localStorage.getItem('access_token');
+    const axiosConfig = {
+        headers: {
+            'x-access-token': accessToken
+        }
+    };
+    const response = await axios.post(`${userBackendApiUrl}/${id}/buy-course`, {courseId}, axiosConfig);
     const result = response?.data?.success === true ? response?.data?.success : false;
     return result;
 }
