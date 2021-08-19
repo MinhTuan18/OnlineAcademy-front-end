@@ -62,7 +62,11 @@
   margin-right: 20px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgb(212, 212, 212);
+  border-bottom: 1px solid rgb(199, 164, 164);
+  color: #81868a;
+}
+.lesson-item-active {
+  font-weight: bold;
 }
 .lesson-item-icon {
   color: #f16101;

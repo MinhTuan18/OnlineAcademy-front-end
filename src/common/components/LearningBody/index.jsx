@@ -62,10 +62,12 @@ export default function LearningBody({courseInfo}) {
                             Course content</span>
                     </div>
                     <div className="lesson-list">
-                        <div className="lesson-item">
+                        <Link onClick={console.log('heelo')}>
+                        <div className="lesson-item lesson-item-active">
                             <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
                             asdasdas
                         </div>
+                        </Link>
                         <div className="lesson-item">
                             <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
                             asdasdas
