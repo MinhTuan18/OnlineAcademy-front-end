@@ -1,11 +1,13 @@
+import { change } from 'dom7';
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import { userInfo as getUserInfo} from '../../../service/user';
+import { userInfo as getUserInfo, toggleWatchlist} from '../../../service/user';
 import CourseFigureById from '../CourseFigureById';
 
 export default function WatchlistBody(props) {
     
     const [userInfo, setUserInfo] = useState({watchlist:[]});
+    const [change, setChange] = useState(0)
 
     useEffect(() => {
         const fetch = async () => {
@@ -14,7 +16,14 @@ export default function WatchlistBody(props) {
         }
 
         fetch();
-    }, [])
+    }, [change])
+
+    const removeCourse = async (c) => {
+        const result = await toggleWatchlist(localStorage.getItem('userId'), c)
+        if(result) {
+            setChange(change+1)
+        }
+    }
 
     return (
         <>
@@ -48,6 +57,7 @@ export default function WatchlistBody(props) {
                     userInfo.watchlist.map(c => {
                         return ( 
                             <div key={c}>
+                                <button onClick={()=>removeCourse(c)}>x</button>
                                 <CourseFigureById courseId={c}></CourseFigureById>
                             </div>
                         )

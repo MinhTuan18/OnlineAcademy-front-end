@@ -15,7 +15,7 @@ CourseDetailBody.propTypes = {
 
 export default function CourseDetailBody({ courseInfo, loggedIn }) {
 
-    const [userInfo, setUserInfo] = useState({registeredCourses: [], watchlist:[]});
+    const [userInfo, setUserInfo] = useState({registeredCourses: [], watchlist:[], feedbacks: []});
     const [change, setChange] = useState(0)
     const history = useHistory();
 
@@ -29,7 +29,9 @@ export default function CourseDetailBody({ courseInfo, loggedIn }) {
     }, [change])
 
     let amountStudents = courseInfo.registeredStudents === undefined ? 0 : courseInfo.registeredStudents.length;
-    let amountReviews = courseInfo.comments === undefined ? 0 : courseInfo.comments.length;
+    let amountReviews = courseInfo.feedbacks === undefined ? 0 : courseInfo.feedbacks.length;
+    let instructorName = courseInfo.instructor ===undefined ? '' : courseInfo.instructor.name;
+    let instructorDate = courseInfo.instructor ===undefined ? '' : courseInfo.instructor.createdAt;
     
     const WatchlistToggleClick = async (e) =>{
         e.preventDefault()
@@ -79,7 +81,7 @@ export default function CourseDetailBody({ courseInfo, loggedIn }) {
                                             <span>&nbsp;({amountReviews} rating(s)) {amountStudents} student(s)</span>
                                         </div>
                                         <div className="course-details__info">
-                                            Created by <Link to="#">Addie Walters</Link>
+                                            Created by <Link to="#">{instructorName}</Link>
                                         </div>
                                         <div className="course-details__info">
                                             Last updated {courseInfo.updatedAt}
@@ -154,29 +156,25 @@ export default function CourseDetailBody({ courseInfo, loggedIn }) {
                                     <div className="course-details__comment-single">
                                         <div className="course-details__comment-top">
                                             <div className="course-details__comment-img">
-                                                <img src="https://taoanhonline.com/wp-content/uploads/2020/02/anh-doremon-0.jpg?v=1582383592" alt="" />
+                                                <img src="https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" alt="" />
                                             </div>
                                             <div className="course-details__comment-right">
-                                                <h2 className="course-details__comment-name">Steven Meyer</h2>
+                                                <h2 className="course-details__comment-name">{instructorName}</h2>
                                                 <div className="course-details__comment-meta">
-                                                    <p className="course-details__comment-date">26 July, 2019</p>
+                                                    <p className="course-details__comment-date">{instructorDate}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p className="course-details__comment-text">Lorem ipsum is simply free text
-                                            used by
-                                            copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed
-                                            inventore
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                        <p className="course-details__comment-text"></p>
                                     </div>
                                 </div>
 
-                                <CourseReviews courseInfo={courseInfo}></CourseReviews>
+                                {/* <CourseReviews feedbacks={courseInfo}></CourseReviews> */}
 
                             </div>
                         </div>
                         <div className="col-lg-4">
-                                <SuggestedCourses courseId="60fe0caf60ebe250e40c2be5"></SuggestedCourses>
+                                {/* <SuggestedCourses courseId="60fe0caf60ebe250e40c2be5"></SuggestedCourses> */}
                             
                         </div>
                     </div>

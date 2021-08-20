@@ -20,7 +20,7 @@ const CourseCard = ({id, img, category, instructorName, title, averageRating, to
           <img src={img} alt="" />
             by <Link>{instructorName}</Link>
         </div>
-        <h2 className="course__title width ellipse two-lines" title={title}><Link>{title}</Link></h2>
+        <h2 className="course__title width ellipse two-lines" title={title}><Link to={`/course/${id}`}>{title}</Link></h2>
         <div className="course__stars">
           <StarRatings className="course__stars-wrap"
             rating={averageRating} starDimension="15px" starSpacing="0" starRatedColor="#f16101"

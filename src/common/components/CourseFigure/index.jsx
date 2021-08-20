@@ -68,7 +68,7 @@ const CourseFigure = ({ course, isCourseInWatchList }) => {
                         <img src="/images/team-1-1.jpg" alt="" />
                         by <Link>{course.instructorName ? course.instructorName : "Unknown"}</Link>
                     </div>
-                    <h2 className="course-one__title"><Link>{course.title}</Link></h2>
+                    <h2 className="course-one__title"><Link to={`/course/${course._id}`}>{course.title}</Link></h2>
                     <div className="course-one__stars">
                         <span className="course-one__stars-wrap">
                             <i className="fa fa-star"></i>
@@ -81,12 +81,12 @@ const CourseFigure = ({ course, isCourseInWatchList }) => {
                         <span className="course-one__stars-count">{course.totalRatings ? course.totalRatings : 0}</span>
                     </div>
                     <div className="course-one__meta">
-                        <Link><i className="far fa-clock"></i> 10 Hours</Link>
-                        <Link><i className="far fa-folder-open"></i> 6
+                        <Link><i className="far fa-clock"></i></Link>
+                        <Link><i className="far fa-folder-open"></i> 
                             Lectures</Link>
                         <Link>{course.fee}</Link>
                     </div>
-                    <Link className="course-one__link" to={`/courses/${course._id}`}>See Preview</Link>
+                    <Link className="course-one__link" to={`/course/${course._id}`}>See Preview</Link>
                 </div>
             </div>
         </div>

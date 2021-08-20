@@ -7,7 +7,7 @@ import { queryCourseById } from '../../../service';
 const CourseFigureById = (props) => {
     const { courseId } = props;
 
-    const [info, setInfo] = useState({comments: [], registeredStudents: []})
+    const [info, setInfo] = useState({comments: [], registeredStudents: [], instructor: {name:""}, registeredStudents:[]})
     useEffect(() => {
         const fetch = async () => {
             const inf = await queryCourseById(courseId)
@@ -20,23 +20,22 @@ const CourseFigureById = (props) => {
 
     return (
         <div className="item">
-            <div className="course-one__single color-1">
+            <div className="course-one__single color-1" style={{minWidth:'370px'}}>
                 <div className="course-one__image" style={{height: "243px"}}>
                     <img src={info.thumbnailImageUrl} alt={info.id}  />
-                    <i className="far fa-heart"></i>
                 </div>
                 <div className="course-one__content" style={{height: "395px"}}>
                     <Link className="course-one__category"></Link>
                     <div className="course-one__admin">
-                        By <Link></Link>
+                        By <Link>{info.instructor.name ? info.instructor.name :""}</Link>
                     </div>
-                    <h2 className="course-one__title"><Link to={`/course/${info.id}`}>{info.title}</Link></h2>
+                    <h2 className="course-one__title"><Link to={`/course/${info._id}`}>{info.title}</Link></h2>
                     <div className="course-one__stars">
                         <span className="course-one__count">{info.averageRating}</span>
                         <span className="course-one__stars-wrap">
                         &nbsp;<i className="fa fa-star"></i>
                         </span>
-                        <span className="course-one__stars-count">{info.comments.length}</span>
+                        <span className="course-one__stars-count">{info.registeredStudents.length}</span>
                     </div>
                     <div className="course-one__meta">
                         <Link><i className="far fa-user"></i> {info.registeredStudents.length} student(s)</Link>
