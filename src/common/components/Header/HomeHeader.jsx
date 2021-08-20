@@ -57,7 +57,8 @@ export const HomeHeader = ({ loggedIn }) => {
                             {role === 'instructor' ? (
                                 <Link to='/instructor/courses'>Instructor</Link>    
                             ) : null}
-                            <Link to='#'>{localStorage.getItem('userName')}</Link>
+
+                            <Link to="/user-profile">{localStorage.getItem('userName')}</Link>
                             <Link onClick={onLogoutClick}>Logout</Link>
                         </div>
                     ) : 

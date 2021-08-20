@@ -93,3 +93,8 @@ export const createCourse = async (courseInfo) => {
         }
     }
 }
+export const queryCourseById = async (courseId) => {
+    const response = await axios.get(`${coursesBackendApiUrl}/${courseId}`)
+    const raw = response?.data ? response?.data : []
+    return raw
+}
