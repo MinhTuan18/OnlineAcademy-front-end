@@ -1,0 +1,9 @@
+.MuiInputBase-input {
+    padding-top: 10px;
+
+}
+
+.MuiInputBase-input::placeholder {
+    color: #7c4bc0;
+    opacity: 1;
+}

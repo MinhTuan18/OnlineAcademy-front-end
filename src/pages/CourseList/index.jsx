@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../../common/components/Header';
 
-const courseList = () => {
+const CourseList = () => {
     return (
         <>
             <Header/>
@@ -10,4 +10,4 @@ const courseList = () => {
     );
 }
 
-export default courseList;
+export default CourseList;

@@ -1,0 +1,9 @@
+.MuiListItem-root {
+    color: #7c4bc0
+}
+.MuiListItem-root.active {
+    color: #f16101
+}
+.MuiListItem-root:hover {
+    color: #2da397
+}

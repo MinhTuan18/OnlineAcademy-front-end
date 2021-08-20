@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { Drawer, Dropdown, Icon, Nav, Navbar, Sidenav } from 'rsuite';
-// import { useViewport } from '../../../context/ViewportContext';
-// import logo from '../../../resources/Logo-dark.svg';
-// import logo_testnet from '../../../resources/logo-testnet.svg';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import './header.css';
-// import { useSetRecoilState } from 'recoil';
-// import walletState from '../../../atom/wallet.atom';
-// import { isLoggedIn, logoutWallet } from '../../../service';
+import { logout } from '../../../reducers';
 
+export const HomeHeader = ({ loggedIn }) => {
 
-export const HomeHeader = () => {
+    const dispatch = useDispatch();
+
     const [sticky, setSticky] = useState(false);
+
+    const accessToken = localStorage.getItem('access_token');
     
-    // const componentDidMount = () => {
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     //Mobile Menu
-    //     mobileMenu();
-    // }
-
-    // const componentWillUnmount = () => {
-    //     window.removeEventListener('scroll', handleScroll);
-    // }
+    const role = localStorage.getItem('role');
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         mobileMenu();
-    });
+    }, [sticky]);
 
     const handleScroll = () => {
-
         if (window.scrollY > 70) {
             setSticky(true);
         } else if (window.scrollY < 70) {
@@ -48,21 +39,39 @@ export const HomeHeader = () => {
             mainNav.style.display = ( (mainNav.style.display !== "block" ? "block" : "none" ) );
         });
     }
+
+    const onLogoutClick = event => {
+        event.preventDefault();
+        dispatch(logout());
+    }
     return (
         <header className="site-header site-header__home-three ">
             <div className="topbar-one">
                 <div className="container">
                     <div className="topbar-one__left">
-                        <Link>needhelp@kipso.com</Link>
-                        <Link>444 888 0000</Link>
+                        <Link to='#'>needhelp@kipso.com</Link>
+                        <Link to='#'>444 888 0000</Link>
                     </div>
-                    <div className="topbar-one__right">
-                        <Link>Login</Link>
-                        <Link>Register</Link>
-                    </div>
+                    { (loggedIn || accessToken) ? (
+                        <div className="topbar-one__right">
+                            {role === 'instructor' ? (
+                                <Link to='/instructor/courses'>Instructor</Link>    
+                            ) : null}
+                            <Link to='#'>{localStorage.getItem('userName')}</Link>
+                            <Link onClick={onLogoutClick}>Logout</Link>
+                        </div>
+                    ) : 
+                    (
+                        <div className="topbar-one__right">
+                            <Link to='/login'>Login</Link>
+                            <Link to='/register'>Register</Link>
+                        </div>
+                    )
+                    }
+                    
                 </div>
             </div>
-            <nav className={`navbar navbar-expand-lg navbar-light home-page header-navigation stricky ${sticky ? 'stricked-menu stricky-fixed' : ''}`}>
+            <nav className={`navbar navbar-expand-lg navbar-light home-page header-navigation stricky ${sticky ? 'stricked-menu stricky-fixed' : ''}`} style={sticky ? {position: 'fixed'} : {position: 'relative'}}>
                 <div className="container clearfix">
                     <div className="logo-box clearfix">
                         <Link to="/" className="navbar-brand"> 
@@ -73,9 +82,9 @@ export const HomeHeader = () => {
                         </button>
                     </div>
                     <div className="main-navigation">
-                        <ul className=" navigation-box">
+                        <ul className="navigation-box">
                             <li className="current">
-                                <Link href="/">Home</Link>
+                                <Link to="/">Home</Link>
                                 <ul className="sub-menu">
                                     <li><Link to="/">Home 01</Link></li>
                                     <li><Link>Home 02</Link></li>
@@ -95,7 +104,7 @@ export const HomeHeader = () => {
                                     <li><Link>About Page</Link></li>
                                     <li><Link>Gallery</Link></li>
                                     <li><Link>Pricing Plans</Link></li>
-                                    <li><Link>FAQ'S</Link></li>
+                                    <li><Link>FAQ`&lsquo;`S</Link></li>
                                 </ul>
                             </li>
                             <li>
@@ -140,6 +149,11 @@ export const HomeHeader = () => {
 
     );
 }
+
+HomeHeader.propTypes = {
+    loggedIn: PropTypes.bool,
+}
+
 
 
 
