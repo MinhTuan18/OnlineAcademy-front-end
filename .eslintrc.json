@@ -22,6 +22,7 @@
         "linebreak-style": ["off", "windows"],
         "react/no-children-prop": 0,
         "react/no-find-dom-node": 0,
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "react/react-in-jsx-scope": "off"
     }
 }

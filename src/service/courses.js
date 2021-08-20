@@ -12,9 +12,9 @@ export const queryCourses = async (query) => {
 export const queryCoursesByAdvancedFilter = async (filter) => { 
     // console.log(END_POINT);
     // console.log(filter);
-    const title = filter.title ? filter.title : '';
-    const category = filter.category ? filter.category : '';
-    const subCategory = filter.subCategory ? filter.subCategory : '';
+    const title = filter?.title ? filter?.title : '';
+    const category = filter?.category ? filter?.category : '';
+    const subCategory = filter?.subCategory ? filter?.subCategory : '';
     // console.log(title + ' ' + category + ' ' + subCategory);
 
     let response;
@@ -40,6 +40,7 @@ export const queryCoursesByAdvancedFilter = async (filter) => {
         }
         else response = await axios.get(`${coursesBackendApiUrl}`);
     }
+    // console.log(response);
     // const raw = response?.data ? response?.data : {};
     // return {
     //     courses: raw.courses,
@@ -61,6 +62,42 @@ export const queryNewestCourses = async () => {
     return raw;
 }
 
+export const createCourse = async (courseInfo) => {
+    console.log(courseInfo);
+    try {
+        const accessToken = localStorage.getItem('access_token');
+        console.log(accessToken);
+        const axiosConfig = {
+            headers: {
+                'x-access-token': accessToken
+            }
+        };
+        const response = await axios.post(
+            `${coursesBackendApiUrl}`, 
+            courseInfo,
+            axiosConfig
+        );
+        console.log(response);
+        const raw = response?.data ? response?.data : {};
+        return raw;
+    } catch (error) {
+        if (error.response) {
+            // Request made and server responded
+            console.log(error.response);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return error.response.data;
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.log(error.request);
+            return {message: 'Server is not available now. Please try again later!'};
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+            return {message: error.message};
+        }
+    }
+}
 export const queryCourseById = async (courseId) => {
     const response = await axios.get(`${coursesBackendApiUrl}/${courseId}`)
     const raw = response?.data ? response?.data : []

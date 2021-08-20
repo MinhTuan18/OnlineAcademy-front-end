@@ -14,16 +14,7 @@ export const HomeHeader = ({ loggedIn }) => {
 
     const accessToken = localStorage.getItem('access_token');
     
-    // const componentDidMount = () => {
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     //Mobile Menu
-    //     mobileMenu();
-    // }
-
-    // const componentWillUnmount = () => {
-    //     window.removeEventListener('scroll', handleScroll);
-    // }
+    const role = localStorage.getItem('role');
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -58,11 +49,15 @@ export const HomeHeader = ({ loggedIn }) => {
             <div className="topbar-one">
                 <div className="container">
                     <div className="topbar-one__left">
-                        <Link>needhelp@kipso.com</Link>
-                        <Link>444 888 0000</Link>
+                        <Link to='#'>needhelp@kipso.com</Link>
+                        <Link to='#'>444 888 0000</Link>
                     </div>
                     { (loggedIn || accessToken) ? (
                         <div className="topbar-one__right">
+                            {role === 'instructor' ? (
+                                <Link to='/instructor/courses'>Instructor</Link>    
+                            ) : null}
+
                             <Link to="/user-profile">{localStorage.getItem('userName')}</Link>
                             <Link onClick={onLogoutClick}>Logout</Link>
                         </div>
@@ -90,7 +85,7 @@ export const HomeHeader = ({ loggedIn }) => {
                     <div className="main-navigation">
                         <ul className="navigation-box">
                             <li className="current">
-                                <Link href="/">Home</Link>
+                                <Link to="/">Home</Link>
                                 <ul className="sub-menu">
                                     <li><Link to="/">Home 01</Link></li>
                                     <li><Link>Home 02</Link></li>
@@ -157,7 +152,7 @@ export const HomeHeader = ({ loggedIn }) => {
 }
 
 HomeHeader.propTypes = {
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
 }
 
 
