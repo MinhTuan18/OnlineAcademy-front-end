@@ -1,15 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './style.css';
 import { PropTypes } from 'prop-types';
 import CourseReviews from '../CourseReviews';
 import SuggestedCourses from '../SuggestedCourses';
+import { userInfo as getUserInfo, toggleWatchlist, buyCourse} from '../../../service/user';
+
 
 CourseDetailBody.propTypes = {
     courseInfo: PropTypes.object,
+    loggedIn: PropTypes.bool
+
 }
 
-export default function CourseDetailBody({ courseInfo }) {
+export default function CourseDetailBody({ courseInfo, loggedIn }) {
+
+    const [userInfo, setUserInfo] = useState({registeredCourses: [], watchlist:[]});
+    const [change, setChange] = useState(0)
+    const history = useHistory();
+
+    useEffect(() => {
+        const fetch = async () => {
+            const user = await getUserInfo(localStorage.getItem('userId'));
+            setUserInfo(user);
+        }
+
+            fetch();
+    }, [change])
+
+    let amountStudents = courseInfo.registeredStudents === undefined ? 0 : courseInfo.registeredStudents.length;
+    let amountReviews = courseInfo.comments === undefined ? 0 : courseInfo.comments.length;
+    
+    const WatchlistToggleClick = async (e) =>{
+        e.preventDefault()
+        if(!userInfo._id) {
+            history.push('/login')
+        }
+        const result = await toggleWatchlist(localStorage.getItem('userId'), courseInfo._id)
+        if(result)
+        {
+            setChange(change => change +1);
+        }
+    }
+
+    const BuyThisCourse= async (e) => {
+        e.preventDefault()
+        if(!localStorage.getItem('userId')) {
+            history.push('/login')
+        }
+        const result = await buyCourse(localStorage.getItem('userId'), courseInfo._id)
+        if(result)
+        {
+            setChange(change => change +1);
+        }
+    }
 
     return (
         <>
@@ -32,7 +76,7 @@ export default function CourseDetailBody({ courseInfo }) {
                                             <span className="course-one__stars-wrap">
                                                 &nbsp;<i className="fa fa-star"></i>
                                             </span>
-                                            <span>&nbsp;(xx ratings) xx students</span>
+                                            <span>&nbsp;({amountReviews} rating(s)) {amountStudents} student(s)</span>
                                         </div>
                                         <div className="course-details__info">
                                             Created by <Link to="#">Addie Walters</Link>
@@ -52,8 +96,13 @@ export default function CourseDetailBody({ courseInfo }) {
                                     <p className="course-details__price-amount">{(courseInfo.fee !== undefined ? courseInfo.fee : '') + ' VND'}</p>
                                     <p>{(courseInfo.discount ? '(' + courseInfo.discount + '% off)' : '')}</p>
                                     <div>
-                                        <button className="thm-btn course-details__price-btn">Buy This Course</button>
-                                        <button className="thm-btn course-details__price-btn"><i className="far fa-heart"></i></button>
+                                    {userInfo.registeredCourses.includes(courseInfo._id)
+                                    ? <Link to={`/learn/${courseInfo._id}`} ><button className="thm-btn course-details__price-btn">Learn now</button> </Link>
+                                    : <button onClick={BuyThisCourse} className="thm-btn course-details__price-btn">Buy This Course</button>}
+                                        
+                                        <button className="thm-btn course-details__price-btn" onClick={WatchlistToggleClick}><i className={`far fa-heart ${
+                                             userInfo.watchlist.includes(courseInfo._id)? 'fa':''
+                                         }`}></i></button>
                                     </div>
                                 </div>
                             </div>

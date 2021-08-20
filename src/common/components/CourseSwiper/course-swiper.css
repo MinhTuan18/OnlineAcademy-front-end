@@ -48,6 +48,7 @@
     margin-bottom: 30px;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
+    max-width: 370px;
   }
   .course-one__single:hover {
     -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);

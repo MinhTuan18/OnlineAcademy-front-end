@@ -64,7 +64,44 @@ const CourseSwiper = ( { type, courseList } ) => {
                                     if (index !== -1) isCourseInWatchList=true;
                                 }
                                 return (
+                                    {/*
+                                    <div className="item" key={course._id}>
+                                        <div className="course-one__single color-4">
+                                            <div className="course-one__image">
+                                                <img src={course.thumbnailImageUrl ? course.thumbnailImageUrl : "/images/course-1-1.jpg"} alt="course" />
+                                                    <i className="far fa-heart"></i>
+                                            </div>
+                                            <div className="course-one__content">
+                                                <Link className="course-one__category">{course.subCategoryName ? course.subCategoryName : "IT"}</Link>
+                                                <div className="course-one__admin">
+                                                    <img src="/images/team-1-1.jpg" alt="" />
+                                                    by <Link>{course.instructorName ? course.instructorName : "Unknown"}</Link>
+                                                </div>
+                                                <h2 className="course-one__title"><Link to={`/course/${course._id}`}>{course.title}</Link></h2>
+                                                <div className="course-one__stars">
+                                                    <span className="course-one__stars-wrap">
+                                                        <i className="fa fa-star"></i>
+                                                        <i className="fa fa-star"></i>
+                                                        <i className="fa fa-star"></i>
+                                                        <i className="fa fa-star"></i>
+                                                        <i className="fa fa-star"></i>
+                                                    </span>
+                                                    <span className="course-one__count">{course.averageRating}</span>
+                                                    <span className="course-one__stars-count">{course.numOfRatings ? course.numOfRatings : 0}</span>
+                                                </div>
+                                                <div className="course-one__meta">
+                                                    <Link><i className="far fa-clock"></i> 10 Hours</Link>
+                                                    <Link><i className="far fa-folder-open"></i> 6
+                                                        Lectures</Link>
+                                                    <Link>{course.fee}</Link>
+                                                </div>
+                                                <Link className="course-one__link">See Preview</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    */}
                                     <CourseFigure course={course} key={course.id} isCourseInWatchList={isCourseInWatchList}/>
+
                                 );
                             })}
                         </Swiper>
