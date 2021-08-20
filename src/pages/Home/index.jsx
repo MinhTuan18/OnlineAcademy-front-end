@@ -15,13 +15,17 @@ import CallToActionThree from '../../common/components/CallToActionThree';
 import Footer from '../../common/components/Footer';
 // import CourseFigure from '../../common/components/CourseFigure';
 import { getAllCategories } from '../../service/categories';
-import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategoryLast7Days } from '../../service';
+import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategoryLast7Days,  } from '../../service';
 // import { queryMostRegistedSubCategoryLast7Days } from '../../service/subcategories';
 
 const Home = () => {
     const loggedIn = useSelector(state => state.auth.loggedIn);
+    const categories = useSelector(state => state.category.categories);
 
-    const [categoryList, setCategoryList] = useState([]);
+    // const watchList = useSelector(state => state.student.watchList);
+    // console.log(watchList);
+
+    // const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
     const [newestCourseList, setNewestCourseList] = useState([]);
     const [mostRegisterSubCategoryList, setMostRegisterSubCategoryList] = useState([]);
@@ -29,9 +33,9 @@ const Home = () => {
 
     useEffect(() => {
         setTimeout(async () => {
-            const categories = await getAllCategories();
-            // console.log(categories);
-            setCategoryList(categories);
+            // const categories = await getAllCategories();
+            // // console.log(categories);
+            // setCategoryList(categories);
             const mostViewCourses = await queryMostViewsCourses();
             setMostViewCourseList(mostViewCourses);
             const newestCourses = await queryNewestCourses();
@@ -44,7 +48,7 @@ const Home = () => {
     return (
         <>
             <HomeHeader loggedIn={loggedIn}/>
-            <Slider categoryList={categoryList}/>
+            <Slider categoryList={categories}/>
             <CourseCat subcategoryList={mostRegisterSubCategoryList}/>
             <CallToActionOne/>
             <TeamTab/>

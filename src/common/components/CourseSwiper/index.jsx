@@ -1,11 +1,14 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import 'swiper/swiper.min.css';
 import './course-swiper.css';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import CourseFigure from '../CourseFigure';
 
 const CourseSwiper = ( { type, courseList } ) => {
+    const watchList = useSelector(state => state.student.watchList);
+    console.log(watchList);
     // const { type, courseList } = props;
     const params = {
         slidesPerView : 3,
@@ -53,7 +56,15 @@ const CourseSwiper = ( { type, courseList } ) => {
                     <div className="course-one__carousel">
                         <Swiper {...params} >
                             {courseList.map(course => {
+                                // console.log(course);
+                                let isCourseInWatchList=false;
+                                if (watchList) {
+                                    const index = watchList.findIndex(e => e.toString() === course._id.toString());
+                                    console.log(index);
+                                    if (index !== -1) isCourseInWatchList=true;
+                                }
                                 return (
+                                    {/*
                                     <div className="item" key={course._id}>
                                         <div className="course-one__single color-4">
                                             <div className="course-one__image">
@@ -88,6 +99,9 @@ const CourseSwiper = ( { type, courseList } ) => {
                                             </div>
                                         </div>
                                     </div>
+                                    */}
+                                    <CourseFigure course={course} key={course.id} isCourseInWatchList={isCourseInWatchList}/>
+
                                 );
                             })}
                         </Swiper>

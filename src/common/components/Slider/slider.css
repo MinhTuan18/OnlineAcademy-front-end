@@ -617,6 +617,10 @@
     position: absolute;
     margin-top: 25px;
   }
+  .slider-three__search select option span.tab{
+    display: inline-block;
+    margin-left: 40px;
+  }
   .slider-three__search button[type=submit] {
     width: 46px;
     height: 46px;
