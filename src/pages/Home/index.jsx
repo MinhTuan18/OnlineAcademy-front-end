@@ -20,10 +20,12 @@ import { queryMostViewsCourses, queryNewestCourses, queryMostRegistedSubCategory
 
 const Home = () => {
     const loggedIn = useSelector(state => state.auth.loggedIn);
+    const categories = useSelector(state => state.category.categories);
+
     // const watchList = useSelector(state => state.student.watchList);
     // console.log(watchList);
 
-    const [categoryList, setCategoryList] = useState([]);
+    // const [categoryList, setCategoryList] = useState([]);
     const [mostViewCourseList, setMostViewCourseList] = useState([]);
     const [newestCourseList, setNewestCourseList] = useState([]);
     const [mostRegisterSubCategoryList, setMostRegisterSubCategoryList] = useState([]);
@@ -31,23 +33,22 @@ const Home = () => {
 
     useEffect(() => {
         setTimeout(async () => {
-            const categories = await getAllCategories();
-            // console.log(categories);
-            setCategoryList(categories);
+            // const categories = await getAllCategories();
+            // // console.log(categories);
+            // setCategoryList(categories);
             const mostViewCourses = await queryMostViewsCourses();
             setMostViewCourseList(mostViewCourses);
             const newestCourses = await queryNewestCourses();
             setNewestCourseList(newestCourses);
             const mostRegisterSubCategories = await queryMostRegistedSubCategoryLast7Days();
             setMostRegisterSubCategoryList(mostRegisterSubCategories);
-            const accessToken = localStorage.getItem('access_token');
         }, 300);
     }, [])
     
     return (
         <>
             <HomeHeader loggedIn={loggedIn}/>
-            <Slider categoryList={categoryList}/>
+            <Slider categoryList={categories}/>
             <CourseCat subcategoryList={mostRegisterSubCategoryList}/>
             <CallToActionOne/>
             <TeamTab/>

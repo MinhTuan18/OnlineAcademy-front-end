@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 import Footer from '../../common/components/Footer';
 import { Header } from "../../common/components/Header";
 import LoginForm from '../../common/components/LoginForm';
-import { setStudentWatchList, setUserInfo } from '../../reducers';
-import { login } from '../../service';
+import { setStudentWatchList, setUserInfo, setInstructorCreatedCourseList} from '../../reducers';
+import { login, getCreatedCourseList } from '../../service';
 
 const Login = () => {
     // const { handleLogin } = props
@@ -46,6 +46,14 @@ const Login = () => {
             dispatch(setUserInfo(userdata));
             // console.log(userdata.user.watchList);
             dispatch(setStudentWatchList(userdata.user.watchList));
+        }
+        if (userdata.user.role === 'instructor') {
+            const instructorId = localStorage.getItem('userId');
+            const getCreatedCourseListResult = await getCreatedCourseList(instructorId);
+            console.log(getCreatedCourseListResult);
+            if (getCreatedCourseListResult) {
+                dispatch(setInstructorCreatedCourseList(getCreatedCourseListResult.createdCourses));
+            }
         }
     }
     return (
