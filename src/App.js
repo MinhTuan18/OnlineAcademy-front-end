@@ -21,7 +21,8 @@ import { useDispatch } from 'react-redux';
 import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
-import Wishlist from './pages/Wishlist/Wishlist';
+import Watchlist from './pages/Watchlist/Watchlist';
+import Learning from './pages/Learning';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,15 +49,20 @@ function App() {
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <PrivateRoute path='/change-password' component={ChangePassword}/>
+
             <Route path='/instructors' component={InstructorProfile}/>
             {/* <PrivateInstructorRoute exact path='/instructor' component={Instructor}/> */}
             <PrivateInstructorRoute exact path='/instructor/courses' component={Instructor} />
             <PrivateInstructorRoute path='/instructor/course/create' component={CourseCreation}/>
+
             <Route path='/course/:courseId' component={CourseDetail}/>
             <Redirect from="/course" to="/courses" />
+              
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
-            <PrivateRoute path='/wishlist' component={Wishlist}/>
+            <PrivateRoute path='/watchlist' component={Watchlist}/>
+            <PrivateRoute path='/learn/:courseId' component={Learning}/>
+
           </Switch>
         </div>
     </Router>

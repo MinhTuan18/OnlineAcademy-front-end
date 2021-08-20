@@ -88,6 +88,7 @@ const Slider = ({ categoryList }) => {
                                         <button type="submit">
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
+
                                         <select defaultValue='' className="form-select" {...register("selectedCat")}> 
                                             <option value="">All Categories</option>
                                             {categoryList.map(category => {

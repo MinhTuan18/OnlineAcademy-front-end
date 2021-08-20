@@ -61,7 +61,6 @@ export const queryNewestCourses = async () => {
     const raw = response?.data ? response?.data : [];
     return raw;
 }
-
 export const createCourse = async (courseInfo) => {
     console.log(courseInfo);
     try {
@@ -103,3 +102,4 @@ export const queryCourseById = async (courseId) => {
     const raw = response?.data ? response?.data : []
     return raw
 }
+
