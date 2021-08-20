@@ -9,9 +9,9 @@ const CourseCard = ({id, img, category, instructorName, title, averageRating, to
   const heartButtonClick = () => {
   }
   return(
-		<Link className="course__single color-2">
+		<Link to={`/course/${id}`} className="course__single color-2">
       <div className="course__image">
-        <img src="/images/course-1-2.jpg" alt="" />
+        <img src={img || "/images/course-1-2.jpg"} alt="" className='course-img'/>
         <i onClick={heartButtonClick} className="far fa-heart"></i>
       </div>
       <div className="course__content">

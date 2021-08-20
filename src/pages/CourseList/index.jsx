@@ -160,9 +160,8 @@ const CourseList = (props) => {
 
 	//Render course list
 	const renderCourseList = courseList.map(course => {
-		console.log(course.thumbnailImageUrl)
-		const { id, thumbnailImageUrl, category, instructorName, title, averageRating, totalRatings, lectureCount, fee } = course;
-		return <CourseCard key={id} id={id} img={thumbnailImageUrl} category={category} instructorName={instructorName} title={title} 
+		const { _id, thumbnailImageUrl, category, instructorName, title, averageRating, totalRatings, lectureCount, fee } = course;
+		return <CourseCard key={_id} id={_id} img={thumbnailImageUrl} category={category} instructorName={instructorName} title={title} 
 		averageRating={averageRating} totalRatings={totalRatings} lectureCount={lectureCount} fee={fee}/>
 	})
 
