@@ -89,8 +89,8 @@ const Slider = ({ categoryList }) => {
                                             <i className="kipso-icon-magnifying-glass"></i>
                                         </button>
 
-                                        <select className="form-select" {...register("selectedCat")}>
-                                            <option value="" selected>All Categories</option>
+                                        <select defaultValue='' className="form-select" {...register("selectedCat")}> 
+                                            <option value="">All Categories</option>
                                             {categoryList.map(category => {
                                                 return (
                                                     <>
@@ -98,13 +98,11 @@ const Slider = ({ categoryList }) => {
                                                             {category.subCategories.map(subCategory => {
                                                                 return (
                                                                     <>
-                                                                        <option value={`subCategory:${subCategory._id}`}>&nbsp;&nbsp;{subCategory.name}</option>
+                                                                        <option value={`subCategory:${subCategory._id}`}>&emsp;&emsp;{subCategory.name}</option>
                                                                     </>
                                                                 )
                                                             })}
-                                                            
                                                     </>
-                                                    
                                                 );
                                             })}        
                                         </select>

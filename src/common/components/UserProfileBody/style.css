@@ -1,0 +1,38 @@
+.user-profile__form-top {
+    background-color: #2da397;
+    padding-left: 30px;
+    position: relative;
+  }
+  .user-profile__form-top::before {
+    content: '';
+    width: 38px;
+    height: 10px;
+    background-image: none;
+    background-position: 0 0;
+    position: absolute;
+    top: 100%;
+    left: 60px;
+  }
+  .user-profile__form-title {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 20px 0;
+  }
+
+  .user-profile__form-second {
+    padding-left: 30px;
+    position: relative;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f1f1f1;
+  }
+  .my-courses-tab {
+      width: 200px;
+  }
+
+
+  .active-tab {
+    border-top: 2px solid #2da397;
+  }
