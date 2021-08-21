@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { PropTypes } from 'prop-types';
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router'
 import './style.css'
 import { useForm } from "react-hook-form";
-import {postFeedBack} from '../../../service/feedback'
+import { postFeedBack } from '../../../service/feedback'
 import Swal from 'sweetalert2';
+import { queryChapters } from '../../../service/lesson'
 
 
 LearningBody.propTypes = {
@@ -14,6 +16,28 @@ LearningBody.propTypes = {
 
 export default function LearningBody({ courseInfo }) {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { courseId } = useParams()
+
+    const [chapters, setChapters] = useState([])
+    const [current, setCurrent] = useState('')
+
+
+
+    useEffect(() => {
+        const fetch = async () => {
+            const chaptersList = await queryChapters(courseId)
+            setChapters(chaptersList)
+            setCurrent(chaptersList ? chaptersList[0]?.video:'')
+        }
+
+        fetch()
+
+    }, [])
+
+    const changeLesson = (video) => {
+        setCurrent(video)
+    }
+
     const showSuccessModal = () => {
         Swal.fire({
             title: 'Success',
@@ -87,14 +111,14 @@ export default function LearningBody({ courseInfo }) {
             </div>
             <div className="learning-container">
                 <div className="main">
-                    <ReactPlayer width="100%" height="475px" controls url="https://youtu.be/Zzn9-ATB9aU"></ReactPlayer>
-                    <div className="description-section" style={{fontWeight:"bold", fontSize: "20px"}}>Feedback</div>
+                    <ReactPlayer width="100%" height="475px" controls url={current}></ReactPlayer>
+                    <div className="description-section" style={{ fontWeight: "bold", fontSize: "20px" }}>Feedback</div>
 
-                    <form style={{display:"flex"}} className="description-section"
-                            noValidate="novalidate"
-                            onSubmit={handleSubmit(feedbackSubmit)}>
-                        <select {...register("rating", { required: true })} style={{border:"none"}}>
-                            <option></option>    
+                    <form style={{ display: "flex" }} className="description-section"
+                        noValidate="novalidate"
+                        onSubmit={handleSubmit(feedbackSubmit)}>
+                        <select {...register("rating", { required: true })} style={{ border: "none" }}>
+                            <option></option>
                             <option value="5">5</option>
                             <option value="4">4</option>
                             <option value="3">3</option>
@@ -102,11 +126,11 @@ export default function LearningBody({ courseInfo }) {
                             <option value="1">1</option>
                         </select>
                         {errors.rating && <span>Rating required</span>}
-                        <input type="text" placeholder="Share your review here!" {...register("ratingContent", { required: true })} style={{width:"50%",marginLeft:"25px",border:"none"    }}/>
+                        <input type="text" placeholder="Share your review here!" {...register("ratingContent", { required: true })} style={{ width: "50%", marginLeft: "25px", border: "none" }} />
                         {errors.ratingContent && <span>Review required</span>}
 
-                
-                        <button type="submit" style={{marginLeft: "auto", border:"none"}} className="">Send</button>
+
+                        <button type="submit" style={{ marginLeft: "auto", border: "none" }} className="">Send</button>
                     </form>
 
                 </div>
@@ -117,104 +141,21 @@ export default function LearningBody({ courseInfo }) {
                             Course content</span>
                     </div>
                     <div className="lesson-list">
-                        <Link onClick={console.log('')}>
-                            <div className="lesson-item lesson-item-active">
-                                <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                                asdasdas
-                            </div>
-                        </Link>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
-                        <div className="lesson-item">
-                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
-                            asdasdas
-                        </div>
+
+                        {
+
+                            chapters.map(c => {
+                                return (
+                                    <Link replace key={c._id} onClick={() => changeLesson(c.video)}>
+                                        <div className="lesson-item lesson-item-active">
+                                            <div className="lesson-item-icon"><i className="fas fa-play"></i></div>
+                                            {c.name}
+                                        </div>
+                                    </Link>
+
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
