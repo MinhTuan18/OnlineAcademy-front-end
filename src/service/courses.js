@@ -2,8 +2,13 @@ import axios from 'axios';
 //import extract from '../common/utils/extract';
 // import { END_POINT, } from '../config';
 
-const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
+const coursesBackendApiUrl = `https://online-academy-backend.herokuapp.com/api/courses`;
 
+export const queryCourses = async (query) => {
+    const response = await axios.get(`${coursesBackendApiUrl}/getCourses/query`, { params: { ...query } });
+    const raw = response?.data ? response?.data : [];
+    return raw;
+}
 export const queryCoursesByAdvancedFilter = async (filter) => { 
     // console.log(END_POINT);
     // console.log(filter);
@@ -56,7 +61,6 @@ export const queryNewestCourses = async () => {
     const raw = response?.data ? response?.data : [];
     return raw;
 }
-
 export const createCourse = async (courseInfo) => {
     console.log(courseInfo);
     try {
@@ -98,3 +102,4 @@ export const queryCourseById = async (courseId) => {
     const raw = response?.data ? response?.data : []
     return raw
 }
+

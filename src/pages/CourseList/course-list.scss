@@ -1,0 +1,41 @@
+.course-list-wrapper {
+  margin: 0 4%;
+  
+  
+  .content-wrapper {
+    width: auto;
+    margin: 5rem 0;
+  }
+  // .padding-0 {
+  //   //padding: 0 !important;
+  // }
+
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .grid {
+    display: grid;
+    margin: 2rem 0;
+    flex-grow: 1;
+    grid-gap: 20px;
+    align-content: center;
+    //grid-auto-rows: 500px;
+    grid-template-columns: 30% 30% 30%;
+
+  }
+
+  .search-bar {
+    margin: 0 auto;
+  }
+
+  .pagination {
+    width: 40%;
+    margin: 0 auto;
+
+    .pagin {
+      margin-left: 10px;
+    }
+  }
+}

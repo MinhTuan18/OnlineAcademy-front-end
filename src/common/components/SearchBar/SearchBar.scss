@@ -1,0 +1,18 @@
+.padding-none {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+  align-content: stretch;
+}
+
+.sort-by {
+  width: 100px;
+
+  .sort-order-label {
+    margin-right: 2px !important;
+  }
+}

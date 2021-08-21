@@ -65,6 +65,7 @@ const CourseSwiper = ( { type, courseList } ) => {
                                 }
                                 return (
                                     <CourseFigure course={course} key={course.id} isCourseInWatchList={isCourseInWatchList}/>
+
                                 );
                             })}
                         </Swiper>
