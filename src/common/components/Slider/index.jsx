@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { queryCoursesByAdvancedFilter, } from '../../../service';
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
 
 const Slider = ({ categoryList }) => {
 
@@ -28,20 +29,34 @@ const Slider = ({ categoryList }) => {
     const { register, handleSubmit } = useForm();
     const [filter, setFilter] = useState(null);
     const [emptySearchFormAlert, setEmptySearchFormAlert] = useState(false);
-    
+    const history = useHistory();
+
 
     const onSubmit = async (searchFilterData) => {
         console.log(searchFilterData);
         const { courseNameFilter, selectedCat } = searchFilterData;
         const [typeOfCat, id] = selectedCat.split(':');
+        let params;
         if (courseNameFilter !== '' && selectedCat === '') {
             setFilter({title: courseNameFilter});
+            params = {title: courseNameFilter};
         } else if (courseNameFilter === '' && selectedCat !== '') {
             typeOfCat === 'category' ? setFilter({category: id}) : setFilter({subCategory: id});
+            typeOfCat === 'category' ? params = {category: id} : params = {subCategory: id};
         } else if (courseNameFilter !== '' && selectedCat !== '') {
             typeOfCat === 'category' ? setFilter({title: courseNameFilter, category: id}) : setFilter({title: courseNameFilter, subCategory: id});
+            typeOfCat === 'category' ? params = {title: courseNameFilter, category: id} : params = {title: courseNameFilter, subCategory: id};
+
             // setFilter({title: courseName, category: selectedCat});
-        } else setFilter({});
+        } else {
+            setFilter({});
+            params = {};
+        };
+
+        history.push({
+            pathname: '/courses',
+            search: '?' + new URLSearchParams(params).toString()
+          })
     }
 
     useEffect(() => {
