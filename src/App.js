@@ -3,11 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-<<<<<<< HEAD
   Redirect
-=======
-  Redirect,
->>>>>>> e7af8929b8f542d4bf2dda3e30e0c284413cfae8
 } from 'react-router-dom';
 import './App.css';
 import {PrivateRoute, PrivateInstructorRoute} from './common/components/PrivateRoute';
@@ -25,14 +21,11 @@ import { useDispatch } from 'react-redux';
 import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
-<<<<<<< HEAD
-import Wishlist from './pages/Wishlist/Wishlist';
+// import Wishlist from './pages/Wishlist/Wishlist';
 import CourseManagement from './pages/Instructor/CourseManagement';
 import Profile from './pages/Instructor/Profile';
-=======
 import Watchlist from './pages/Watchlist/Watchlist';
 import Learning from './pages/Learning';
->>>>>>> e7af8929b8f542d4bf2dda3e30e0c284413cfae8
 
 function App() {
   const dispatch = useDispatch();
