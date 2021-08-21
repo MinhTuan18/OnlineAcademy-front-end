@@ -2,10 +2,10 @@ import axios from 'axios';
 //import extract from '../common/utils/extract';
 // import { END_POINT, } from '../config';
 
-const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
+const coursesBackendApiUrl = `https://online-academy-backend.herokuapp.com/api/courses`;
 
 export const queryCourses = async (query) => {
-    const response = await axios.get(`${coursesBackendApiUrl}`, { params: { ...query } });
+    const response = await axios.get(`${coursesBackendApiUrl}/getCourses/query`, { params: { ...query } });
     const raw = response?.data ? response?.data : [];
     return raw;
 }
