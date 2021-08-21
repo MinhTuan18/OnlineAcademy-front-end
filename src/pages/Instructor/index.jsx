@@ -47,18 +47,14 @@ const Instructor = () => {
     <DashboardLayoutRoot>
       <Navbar />
       <Sidebar />
-      <Router>
+      
           <DashboardLayoutContentWrapper>
             <DashboardLayoutContent>
-                <Switch>
-                    <Route path='/instructor/courses' component={Courses}/>
-                    {/* <Route path='/instructor/courses/:courseId' component={Courses}/> */}
-                </Switch>
+                
+                    <Courses/>
                 <Footer/>
             </DashboardLayoutContent>
           </DashboardLayoutContentWrapper>
-      </Router>
-      
     </DashboardLayoutRoot>
 )};
 

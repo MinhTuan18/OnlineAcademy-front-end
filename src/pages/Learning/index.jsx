@@ -9,7 +9,7 @@ export default function Learning(props) {
     
     const history = useHistory()
     const { courseId } = useParams()
-    const [courseInfo, setCourseInfo] = useState([])
+    const [courseInfo, setCourseInfo] = useState({courseId})
 
     useEffect(() => {
         const getData = async function () {
@@ -20,7 +20,7 @@ export default function Learning(props) {
             }
 
             const course = await queryCourseById(courseId)
-            setCourseInfo(course.data)
+            setCourseInfo({...courseInfo, ...course.data})
         }
 
         getData()

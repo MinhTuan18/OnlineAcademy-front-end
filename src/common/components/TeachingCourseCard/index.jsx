@@ -9,11 +9,9 @@ import {
     LinearProgress,
     Chip
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-// import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
-// import Typography from '@material-ui/core/Typography';
-// import ButtonBase from '@material-ui/core/ButtonBase';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCourseInfo } from '../../../reducers';
 
 const BorderLinearProgress = withStyles((theme) => ({
     root: {
@@ -61,6 +59,13 @@ const useStyles = makeStyles((theme) => ({
 const TeachingCourseCard = (props) => {
     const classes = useStyles();
     const { course } = props;
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const handleMangeCourseClick = (event) => {
+        event.preventDefault();
+        dispatch(setCourseInfo(course));
+        history.push(`/instructor/course/${course?._id}/manage`);
+    }
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -96,7 +101,7 @@ const TeachingCourseCard = (props) => {
                             </Grid>
                         </Grid>
                         <Grid item xs={6} container alignItems='center' justifyContent='center'>
-                            <Link className={classes.link} to={`/instructor/courses/${course?._id}`}>
+                            <Link className={classes.link} onClick={handleMangeCourseClick} >
                                 <Grid item>
                                     <Typography variant="subtitle1">
                                         Edit/manage course
