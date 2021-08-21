@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
+// import Wishlist from './pages/Wishlist/Wishlist';
+import UploadImage from './common/components/UploadImage';
 import Watchlist from './pages/Watchlist/Watchlist';
 import Learning from './pages/Learning';
 
@@ -60,9 +62,10 @@ function App() {
               
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
+//             <PrivateRoute path='/wishlist' component={Wishlist}/>
+            <Route path='/upload' component={UploadImage} />
             <PrivateRoute path='/watchlist' component={Watchlist}/>
             <PrivateRoute path='/learn/:courseId' component={Learning}/>
-
           </Switch>
         </div>
     </Router>
