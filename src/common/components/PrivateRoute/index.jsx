@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const PrivateRoute = ({component: Component, ...rest}) => {
+export const PrivateRoute = ({component: Component, ...rest}) => {
     const loggedIn = useSelector(state => state.auth.loggedIn);
     // // const loggedIn = useSelector(state => state.auth.loggedIn);
     // console.log(loggedIn);
@@ -23,4 +23,23 @@ PrivateRoute.propTypes = {
     component: PropTypes.elementType,
 }
 
-export default PrivateRoute;
+export const PrivateInstructorRoute = ({component: Component, ...rest}) => {
+    const loggedIn = useSelector(state => state.auth.loggedIn);
+    // // const loggedIn = useSelector(state => state.auth.loggedIn);
+    // console.log(loggedIn);
+    const accessToken = localStorage.getItem('access_token');
+    const role = localStorage.getItem('role');
+    return (
+        // Show the component only when the user is logged in
+        // Otherwise, redirect the user to /signin page
+        <Route {...rest} render={props => (
+            ((loggedIn || accessToken) && role === 'instructor') ?
+                <Component {...props} /> : 
+                <Redirect to="/login" />
+        )} />
+    );
+};
+
+PrivateInstructorRoute.propTypes = {
+    component: PropTypes.elementType,
+}

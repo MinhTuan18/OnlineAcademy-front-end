@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../UserProfileBody/style.css';
+import { userInfo as getUserInfo} from '../../../service/user'
+import CourseFigureById from '../CourseFigureById';
 
 export default function UserCoursesBody(props) {
-    
+
+    const [userInfo, setUserInfo] = useState({registeredCourses:[]});
+
+    useEffect(() => {
+        const fetch = async () => {
+            const user = await getUserInfo(localStorage.getItem('userId'));
+            setUserInfo(user);
+        }
+
+        fetch();
+    }, [])
 
     return (
         <>
@@ -15,24 +27,32 @@ export default function UserCoursesBody(props) {
                 </div>
                 <div className="container" style={{marginTop: "-120px"}}>
                     <div className="row">
-                        <div style={{display: "flex"}} className="dash">
+                        <div style={{display: "flex"}}>
                             <div className="user-profile__form-top my-courses-tab">
                                 <h2 className="user-profile__form-title">
                                     My Courses
                                 </h2>
                             </div>
-                            <Link to="/wishlist">
+                            <Link replace to="/watchlist">
                                 <div className="user-profile__form-second my-courses-tab">
                                     <h2 className="user-profile__form-title" style={{color: "#81868a"}}>
-                                        Wishlist
+                                        Watchlist
                                     </h2>
                                 </div>
                             </Link>
-                            
                         </div>
                     </div>
 
-                    abc
+                    <div className="row active-tab">
+                    {userInfo.registeredCourses?
+                    userInfo.registeredCourses.map(c => {
+                        return ( 
+                            <div key={c}>
+                                <CourseFigureById courseId={c}></CourseFigureById>
+                            </div>
+                        )
+                    }):''}                          
+                    </div>
 
 
 
