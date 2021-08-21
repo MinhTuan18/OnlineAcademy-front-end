@@ -5,7 +5,7 @@ import axios from 'axios';
 const coursesBackendApiUrl = `http://localhost:3000/api/courses`;
 
 export const queryCourses = async (query) => {
-    const response = await axios.get(`${coursesBackendApiUrl}`, { params: { ...query } });
+    const response = await axios.get(`${coursesBackendApiUrl}/getCourses/query`, { params: { ...query } });
     const raw = response?.data ? response?.data : [];
     return raw;
 }
