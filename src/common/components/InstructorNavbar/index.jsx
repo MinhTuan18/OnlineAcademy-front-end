@@ -29,14 +29,14 @@ export const Navbar = () => (
       </Box>
       <Box style={{ flexGrow: 1 }} />
       <Box px={3} py={1}>
-        <Link 
+        <RouterLink 
             to='/'
             style={{ color: '#7c4bc0' }}
             target="_blank"
             variant="body2"
         >
             Student
-        </Link>
+        </RouterLink>
       </Box>
       
       <NotificationsIcon style={{color: '#f16101'}}/>

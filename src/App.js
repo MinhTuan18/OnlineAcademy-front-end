@@ -3,11 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-<<<<<<< HEAD
   Redirect
-=======
-  Redirect,
->>>>>>> 62e385f0b56b170244cc701c7e8904ef9793a7f4
 } from 'react-router-dom';
 import './App.css';
 import {PrivateRoute, PrivateInstructorRoute} from './common/components/PrivateRoute';
@@ -26,6 +22,8 @@ import CourseDetail from './pages/CourseDetail';
 import UserProfile from './pages/UserProfile';
 import UserCourses from './pages/UserCourses';
 import Wishlist from './pages/Wishlist/Wishlist';
+import CourseManagement from './pages/Instructor/CourseManagement';
+import Profile from './pages/Instructor/Profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,18 +50,20 @@ function App() {
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <PrivateRoute path='/change-password' component={ChangePassword}/>
-<<<<<<< HEAD
             <Route path='/instructors' component={InstructorProfile}/>
             {/* <PrivateInstructorRoute exact path='/instructor' component={Instructor}/> */}
             <PrivateInstructorRoute exact path='/instructor/courses' component={Instructor} />
-            <PrivateInstructorRoute path='/instructor/course/create' component={CourseCreation}/>
-=======
+            <PrivateInstructorRoute exact path='/instructor/profile' component={Profile} />
+
+            <Redirect from="/instructor/course/create" to="/instructor/course/create/step-1" />
+            <PrivateInstructorRoute path='/instructor/course/create/step-1' component={CourseCreation}/>
+            <PrivateInstructorRoute path='/instructor/course/:courseId/manage' component={CourseManagement}/>
+            {/* <Redirect from="/instructor/course/:courseId/manage" to="/instructor/course/:courseId/manage/goals" /> */}
             <Route path='/course/:courseId' component={CourseDetail}/>
             <Redirect from="/course" to="/courses" />
             <PrivateRoute path='/user-profile' component={UserProfile}/>
             <PrivateRoute path='/my-courses' component={UserCourses}/>
             <PrivateRoute path='/wishlist' component={Wishlist}/>
->>>>>>> 62e385f0b56b170244cc701c7e8904ef9793a7f4
           </Switch>
         </div>
     </Router>
